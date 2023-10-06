@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 23</title>
+</head>
+<body>
+
+    <h1>Rombo</h1>
+    <label> Introduce el tamaño del rombo</label>
+    <br>
+    <input type="text" id="tamanyo">
+    <button onclick="rombo()">Crear</button>
+    <br>
+
+    <p id="resultado"></p>
+
+    <script>
+        function rombo() {
+            var tamanyo = parseInt(document.getElementById("tamanyo").value);
+
+            var i, j, forma = '';
+
+            for (i = 0; i < tamanyo * 2 - 1; i++) {
+                j = i < tamanyo ? i : (tamanyo * 2) - (i + 1);
+                forma += Array(tamanyo - j).join(' ') + Array(j + 1).join('* ') + '*\n';
+            }
+
+            document.getElementById("resultado").innerHTML = '<pre>' + forma + '</pre>';
+        }
+    </script>
+</body>
+</html>

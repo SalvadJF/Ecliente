@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 16</title>
+</head>
+<body>
+
+    <label for="numero">Introduce el numero:</label>
+    <input type="text" id="numero">
+    <button onclick="sumarEnteros()">Sumar Enteros</button>
+    <button onclick="sumarTodo()">Sumar Todo</button>
+    <p id="resultado"></p>
+
+    <script>
+        function sumarEnteros() {
+
+            var numero = document.getElementById("numero").value;
+            var resultado = document.getElementById("resultado");
+
+            if (numero === "" || isNaN(numero)) {
+                resultado.innerHTML = "El numero introducido no es correcto";
+                return;
+            }
+
+            var suma = 0;
+            var entero = parseInt(numero);
+
+            while (entero > 0) {
+                suma += entero % 10;
+                entero = Math.floor(entero / 10);
+            }
+            resultado.innerHTML = "La suma de los dígitos enteros es: " + suma;
+        }
+
+        function sumarTodo() {
+
+            var numero = document.getElementById("numero").value;
+            var resultado = document.getElementById("resultado");
+
+            if (numero === "" || isNaN(numero)) {
+                resultado.innerHTML = "El numero introducido no es correcto";
+                return;
+            }
+
+            var suma = 0;
+            var partes = numero.split(".");
+            var entero = parseInt(partes[0]);
+
+            while (entero > 0) {
+                suma += entero % 10;
+                entero = Math.floor(entero / 10);
+            }
+            if (partes.length > 1) {
+                var decimal = partes[1];
+                for (var i = 0; i < decimal.length; i++) {
+                    suma += parseInt(decimal[i]);
+                }
+            }
+            resultado.innerHTML = "La suma de todos los dígitos es: " + suma;
+        }
+
+    </script>
+
+</body>
+</html>

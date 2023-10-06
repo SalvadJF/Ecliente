@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 22</title>
+
+    <script>
+
+        const SALAS = ['Salon de baile', 'La galeria', 'La sala de billar', 'El comedor'];
+        const ARMAS = ['Veneno', 'Trofeo', 'Palo de billar', 'Un cuchillo'];
+        const SOSPECHOSOS = ['Sr.Parker', 'Sra Van Cleve', 'Sra Sparr', 'Sr Kalehoff'];
+
+    </script>
+</head>
+<body>
+
+    <h2>CLUEDO</h2>
+    <br>
+    <label for="Salas">Salas</label>
+    <select id="sala">
+            <script>
+                SALAS.forEach(sala => {document.getElementById("sala").innerHTML += `<option>${sala}</option>`;});
+            </script>
+    </select>
+    <br>
+    <label for="Armas">Armas</label>
+    <select id="arma">
+            <script>
+                ARMAS.forEach(arma => {document.getElementById("arma").innerHTML += `<option>${arma}</option>`;});
+            </script>
+    </select>
+    <br>
+    <label for="Sospechosos">Sospechoso</label>
+    <select id="sospechoso">
+            <script>
+                SOSPECHOSOS.forEach(sospechoso => {document.getElementById("sospechoso").innerHTML += `<option>${sospechoso}</option>`;});
+            </script>
+    </select>
+    <br>
+    <button onclick="deduccion()">Deducir</button>
+    <br>
+    <p id="resultado"></p>
+
+    <script>
+
+        function deduccion() {
+
+            var sala = document.getElementById("sala").value;
+            var sospechoso = document.getElementById("sospechoso").value;
+            var arma = document.getElementById("arma").value;
+            var resuelto = false;
+
+            // Verificar si la habitación coincide con la habitación del sospechoso
+            if (
+                (sala === 'Salon de baile' && sospechoso === 'Sr Kalehoff' && arma === 'Veneno') ||
+                (sala === 'La galeria' && sospechoso === 'Sra Van Cleve' && arma === 'Trofeo') ||
+                (sala === 'La sala de billar' && sospechoso === 'Sra Sparr' && arma === 'Palo de billar') ||
+                (sala === 'El comedor' && sospechoso === 'Sr.Parker' && arma === 'Un cuchillo')
+            ) {
+                resuelto = true;
+            }
+
+            if (resuelto) {
+                document.getElementById("resultado").innerHTML = `${sospechoso} lo hizo en el ${sala} con el ${arma} !`;
+            } else {
+                document.getElementById("resultado").innerHTML = "El misterio no ha sido resuelto.";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Prompt</title>
+</head>
+<body>
+    <div>
+        <h1 id="cabecera">Hola a todos</h1>
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+    </div>
+    <script>
+        debugger;
+        alert("Hola");
+        document.write("<p>Esto es un parrafo por write</p>");
+        document.getElementById("div1").innerHTML=("Seccion 1");
+        var nombre=prompt("Introduce tu nombre:");
+        document.getElementById("div2").innerHTML=("<p>Este es tu nombre: "+nombre+"</p>");
+        var c=confirm("Pulsa un boton");
+        var texto;
+        if (c){ texto="aceptar"} else {text="cancelar"}
+        document.getElementById("div3").innerHTML=("Has pulsado: "+texto);
+    </script>
+</body>
+</html>

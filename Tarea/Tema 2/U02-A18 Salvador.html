@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 18</title>
+</head>
+<body>
+
+    <script>
+
+        var valores = [true, 5, false, "hola", "adios", 2];
+
+        // Determinar cuál de los dos elementos de texto es mayor
+        var texto1 = valores[3];
+        var texto2 = valores[4];
+        var textoMayor = texto1.length > texto2.length ? texto1 : texto2;
+        document.write("El elemento de texto mayor es: " + textoMayor + "<br>");
+
+        // Determinar el resultado de dos operaciones lógicas realizadas con los elementos booleanos
+        var booleano1 = valores[0];
+        var booleano2 = valores[2];
+        var operacion1 = booleano1 && booleano2;
+        var operacion2 = booleano1 || booleano2;
+        document.write("El resultado de la operación lógica AND es: " + operacion1 + "<br>");
+        document.write("El resultado de la operación lógica OR es: " + operacion2 + "<br>");
+
+        // Determinar el resultado de dos operaciones aritméticas realizadas con los elementos numéricos
+        var numero1 = valores[1];
+        var numero2 = valores[5];
+        var suma = numero1 + numero2;
+        var resta = numero1 - numero2;
+        document.write("El resultado de la suma es: " + suma + "<br>");
+        document.write("El resultado de la resta es: " + resta + "<br>");
+
+    </script>
+
+
+</body>
+</html>

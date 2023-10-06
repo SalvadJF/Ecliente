@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 14</title>
+</head>
+<body>
+    <label for="palabra">Selecciona una palabra:</label>
+    <select id="palabra">
+
+        <option value="casa">Casa</option>
+        <option value="mesa">Mesa</option>
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+
+    </select>
+    <button onclick="traducir()">Traducir</button>
+    <h2 id="resultado"></h2>
+    <script>
+
+        function traducir() {
+            var palabraSeleccionada = document.getElementById("palabra").value;
+            var traduccion = "";
+
+            switch (palabraSeleccionada) {
+                case "casa":
+                    traduccion = "House";
+                    break;
+                case "mesa":
+                    traduccion = "Table";
+                    break;
+                case "perro":
+                    traduccion = "Dog";
+                    break;
+                case "gato":
+                    traduccion = "Cat";
+                    break;
+                default:
+                    "";
+            }
+
+            document.getElementById("resultado").innerHTML = traduccion;
+        }
+    </script>
+</body>
+</html>

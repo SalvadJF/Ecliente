@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 15</title>
+</head>
+<body>
+
+    <label for="frase">Introduce una frase:</label>
+    <input type="text" id="frase">
+    <button onclick="mostrarCaracteres()">Mostrar caracteres</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function mostrarCaracteres() {
+
+            var frase = document.getElementById("frase").value;
+
+            var resultado = document.getElementById("resultado");
+
+            resultado.innerHTML = "";
+            // Con esto vaciamos la variable, por si ya ha sido usada
+
+            for (var i = 0; i < frase.length; i++) {
+                var caracter = frase.charAt(i);
+                // El metodo .charAt() me devuelve el caracter de la posicion marcada
+                if (isNaN(caracter)) {
+                    resultado.innerHTML += " " + caracter;
+                // Si no es un caracter numerico se añade a la variable
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>

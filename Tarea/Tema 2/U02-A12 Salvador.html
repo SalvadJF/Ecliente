@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 12</title>
+</head>
+<body>
+    <h1 id="resultado"></h1>
+    <button onclick="contarNumeros()">Contar Numeros</button>
+    <script>
+        function contarNumeros() {
+
+        var numero = parseInt(prompt("Introduzca un numero"));
+
+        isNaN(numero) ? alert("No se ha introducido un numero") :
+        numero >= 1000 ? alert("El numero tiene que ser menor a 1000") :
+        document.getElementById("resultado").innerHTML ="El " + numero + " tiene " + (numero.toString()).length + " digitos";
+
+        }
+
+    </script>
+</body>
+</html>

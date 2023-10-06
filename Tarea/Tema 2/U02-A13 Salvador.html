@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 13</title>
+
+</head>
+<body>
+    <h1 id="resultado"></h1>
+    <button onclick="mostrarLiteralesNumeros()">Numeros Literales</button>
+    <script>
+        function mostrarLiteralesNumeros() {
+
+            var numero = parseInt(prompt("Introduzca un número entre 1 y 5"));
+
+            const numerosLiterales = {
+                1: "Uno",
+                2: "Dos",
+                3: "Tres",
+                4: "Cuatro",
+                5: "Cinco"
+            };
+
+            if (isNaN(numero)) {
+                alert("No se ha introducido un número");
+            } else {
+                numero < 1 || numero > 5 ? alert("El numero no es valido"):
+                document.getElementById("resultado").innerHTML = `El literal de ${numero} es: ${numerosLiterales[numero]}`;
+            }
+        }
+    </script>
+</body>
+</html>

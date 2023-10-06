@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 20</title>
+</head>
+<body>
+
+    <h1>Palíndromos</h1>
+
+    <input type="text" id="palabra">
+    <button onclick="esPalindromo()">Verificar</button>
+    <br>
+    <p id="resultado"></p>
+
+    <script>
+
+        function esPalindromo() {
+
+            var palabra = document.getElementById("palabra").value;
+
+            var simbolos = /[\W_]/g;
+
+            var convertir = palabra.toLowerCase().replace(simbolos, '');
+
+            var pInvertida = convertir.split('').reverse().join('');
+
+            if (convertir === pInvertida) {
+                document.getElementById("resultado").innerHTML = "Es un palíndromo";
+            } else {
+                document.getElementById("resultado").innerHTML = "No es un palíndromo";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

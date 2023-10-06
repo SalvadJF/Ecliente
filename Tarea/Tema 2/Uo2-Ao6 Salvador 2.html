@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Entradas y Salidas</title>
+</head>
+<body>
+    <script>
+        //  Usaremos  document.write(), confirm, parseInt
+        var numero = parseInt(prompt("Por favor, ingresa un Numero"));
+        document.write(numero + " menos 5 es: " + (numero - 5) + "<br>");
+
+        var confirmacion = confirm("¿Estás seguro/a de continuar?");
+        if (confirmacion) {
+          document.write("El usuario hizo clic en 'Aceptar'.");
+        } else {
+          document.write("El usuario hizo clic en 'Cancelar'.");
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 21</title>
+
+    <script>
+
+        function conversionesDeCadenaNumero() {
+            var objeto = document.getElementById("objeto").value;
+            if (!objeto) {
+                document.getElementById("resultado").innerHTML = "Por favor, introduzca una cadena.";
+                return;
+            }
+
+            // Conversión de Cadena a Numero
+            var numero = Number(objeto);
+            document.getElementById("resultado").innerHTML = `El número de "${objeto}" es ${numero}`;
+        }
+
+        function conversionesDeNumeroCadena() {
+            var objeto = document.getElementById("objeto").value;
+            if (!objeto || isNaN(objeto)) {
+                document.getElementById("resultado").innerHTML = "Por favor, introduzca un numero.";
+                return;
+            }
+
+            // Conversión de Numero a Cadena
+            var obCadena = String(objeto);
+            document.getElementById("resultado").innerHTML = `La cadena de "${objeto}" es "${obCadena}"`;
+        }
+
+        function conversionesDeCadenaBooleano() {
+            var objeto = document.getElementById("objeto").value;
+            if (!objeto) {
+                document.getElementById("resultado").innerHTML = "Por favor, introduzca una cadena.";
+                return;
+            }
+
+            // Conversión de Cadena a Booleano
+            var cadenaBol = Boolean(String(objeto));
+            document.getElementById("resultado").innerHTML = `El booleano de "${objeto}" es ${cadenaBol}`;
+        }
+
+        function conversionesDeNumeroBooleano() {
+            var objeto = document.getElementById("objeto").value;
+            if (!objeto || isNaN(objeto)) {
+                document.getElementById("resultado").innerHTML = "Por favor, introduzca un numero.";
+                return;
+            }
+
+            // Conversión de Numero a Booleano
+            var numBol = Boolean(Number(objeto));
+            document.getElementById("resultado").innerHTML = `El booleano de "${objeto}" es ${numBol}`;
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h2> Conversión de Tipos </h2>
+    <label for="objeto">Introduzca el objeto</label>
+    <input type="text" id="objeto">
+    <br>
+    <select id="conversionSelect">
+        <option value="cadenaNumero">Cadena a Numero</option>
+        <option value="numeroCadena">Numero a Cadena</option>
+        <option value="cadenaBooleano">Cadena a Booleano</option>
+        <option value="numeroBooleano">Numero a Booleano</option>
+    </select>
+    <br>
+    <button onclick="realizarConversion()">Realizar Conversión</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function realizarConversion() {
+            var menu = document.getElementById("conversionSelect").value;
+
+            switch (menu) {
+                case "cadenaNumero":
+                    conversionesDeCadenaNumero();
+                    break;
+                case "numeroCadena":
+                    conversionesDeNumeroCadena();
+                    break;
+                case "cadenaBooleano":
+                    conversionesDeCadenaBooleano();
+                    break;
+                case "numeroBooleano":
+                    conversionesDeNumeroBooleano();
+                    break;
+                default:
+                    "";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

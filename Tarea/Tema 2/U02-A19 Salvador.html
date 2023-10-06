@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 19</title>
+
+    <script>
+
+        function verificarContraseña() {
+            var contrasenyaAlmacenada = "1234werty"; // Contraseña almacenada en una variable
+            var contrasenyaIngresada = document.getElementById("contrasenya").value;
+
+            if (contrasenyaIngresada === contrasenyaAlmacenada) {
+                alert("¡Bienvenido!");
+            } else {
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h2>Verificación de contraseña</h2>
+    <label for="contrasenya">Contraseña:</label>
+    <input type="password" id="contrasenya">
+    <button onclick="verificarContraseña()">Verificar</button>
+
+
+</body>
+</html>

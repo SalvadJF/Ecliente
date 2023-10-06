@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 17</title>
+
+    <script>
+
+        function mostrarMenu() {
+
+            var opcion = prompt("Calculadora\n\nPulse 1 para sumar\nPulse 2 para restar\nPulse 3 para multiplicar\nPulse 4 para dividir\nPulse 5 para obtener el módulo\nPulse 6 para salir");
+
+            switch (opcion) {
+
+                case "1":
+                    var num1 = parseFloat(prompt("Ingrese el primer número:"));
+                    var num2 = parseFloat(prompt("Ingrese el segundo número:"));
+                    var resultado = num1 + num2;
+                    alert("El resultado de la suma es: " + resultado);
+                    break;
+
+                case "2":
+                    var num1 = parseFloat(prompt("Ingrese el primer número:"));
+                    var num2 = parseFloat(prompt("Ingrese el segundo número:"));
+                    var resultado = num1 - num2;
+                    alert("El resultado de la resta es: " + resultado);
+                    break;
+
+                case "3":
+                    var num1 = parseFloat(prompt("Ingrese el primer número:"));
+                    var num2 = parseFloat(prompt("Ingrese el segundo número:"));
+                    var resultado = num1 * num2;
+                    alert("El resultado de la multiplicación es: " + resultado);
+                    break;
+
+                case "4":
+                    var num1 = parseFloat(prompt("Ingrese el primer número:"));
+                    var num2 = parseFloat(prompt("Ingrese el segundo número:"));
+                    if (num2 !== 0) {
+                        var resultado = num1 / num2;
+                        alert("El resultado de la división es: " + resultado);
+                    } else {
+                        alert("No se puede dividir entre cero.");
+                    }
+                    break;
+
+                case "5":
+                    var num1 = parseInt(prompt("Ingrese el primer número:"));
+                    var num2 = parseInt(prompt("Ingrese el segundo número:"));
+                    var resultado = num1 % num2;
+                    alert("El módulo es: " + resultado);
+                    break;
+
+                case "6":
+                    var confirmacion = confirm("¿Está seguro de salir?");
+                    if (confirmacion) {
+                        window.close();
+                    } else {
+                        mostrarMenu();
+                    }
+                    break;
+
+                default:
+                    alert("Opción inválida. Por favor, seleccione una opción del menú.");
+                    mostrarMenu();
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <button onclick="mostrarMenu()">Calculadora</button>
+
+</body>
+</html>

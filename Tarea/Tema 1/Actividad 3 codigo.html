@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje por consola</title>
+</head>
+<body>
+    <button id="boton">Generar Mensaje en Consola</button>
+
+    <script>
+        // Función que se ejecuta cuando se hace clic en el botón
+        function generarMensaje() {
+            console.log("Hola, este es un mensaje por consola.");
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres botones</title>
+</head>
+<body>
+    <button id="botonEspañol" onclick="bienvenidaEspanol()">Español</button>
+    <script>
+        // Muestra un mensaje de Bienvenida en español
+        function bienvenidaEspanol() {
+            document.write("<p>Bienvenido</p>");
+        }
+    </script>
+    <button id="botonRuso" onclick="bienvenidaRuso()">Ruso</button>
+    <script>
+        // Muestra un mensaje de Bienvenida en ruso
+        function bienvenidaRuso() {
+            document.write("<p>Добро пожаловать</p>");
+        }
+    </script>
+    <button id="botonIngles" onclick="bienvenidaIngles()">Inglés</button>
+    <script>
+        // Muestra un mensaje de Bienvenida en inglés
+        function bienvenidaIngles() {
+            document.write("<p>Welcome</p>");
+        }
+    </script>
+</body>
+</html>
