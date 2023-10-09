@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 24</title>
+</head>
+<body>
+
+    <h1>Fibonacci</h1>
+
+    <input type="text" id="palabra">
+    <button onclick="secuenciaFib()">Calcular</button>
+    <br>
+    <p id="resultado"></p>
+
+    <script>
+
+        function secuenciaFib() {
+
+        var n = parseInt(document.getElementById("palabra").value);
+        var resultado = [];
+        var num1 = 1;
+        var num2 = 1;
+
+        resultado.push(num1 , num2);
+
+        for (var i = 2; i < n; i++) {
+            var temp = num1 + num2;
+            resultado.push(temp);
+            num1 = num2;
+            num2 = temp;
+
+        }
+
+        document.getElementById("resultado").innerHTML = resultado;
+
+        }
+
+    </script>
+
+</body>
+</html>

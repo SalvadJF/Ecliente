@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 25</title>
+</head>
+<body>
+
+    <h1>Sucesion Geometrica</h1>
+
+    <input type="text" id="palabra">
+    <button onclick="sucesionGeo()">Calcular</button>
+    <br>
+    <p id="resultado"></p>
+
+    <script>
+
+        function sucesionGeo() {
+
+        var n = parseInt(document.getElementById("palabra").value);
+        var resultado = [];
+        var termino = 5;
+
+        for (var i = 0; i < n; i++) {
+            resultado.push(termino);
+            termino *= 3;
+
+        }
+
+        document.getElementById("resultado").innerHTML = resultado;
+
+        }
+
+
+    </script>
+
+</body>
+</html>
