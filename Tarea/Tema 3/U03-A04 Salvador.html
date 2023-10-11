@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 4</title>
+</head>
+<body>
+
+    <h1> Saludo </h1>
+    <p id="hora"></p>
+    <p id="saludo"></p>
+
+    <script>
+
+        var horaActual = new Date();
+
+        var hora = horaActual.getHours();
+
+        var minutos = horaActual.getMinutes();
+
+        var segundos = horaActual.getSeconds();
+
+        var saludar = ""
+
+
+        if (hora >= 6 && hora < 13) {
+            saludar = "Buenos Días";
+        } else if (hora >= 13 && hora < 20) {
+            saludar = "Buenas Tardes";
+        } else {
+            saludar = "Buenas Noches";
+        }
+
+        document.getElementById("saludo").innerHTML = saludar
+
+        document.getElementById("hora").innerHTML = `Son las ${hora}:${minutos}:${segundos}`;
+
+    </script>
+
+</body>
+</html>

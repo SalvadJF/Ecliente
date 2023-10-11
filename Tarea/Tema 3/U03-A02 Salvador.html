@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2</title>
+</head>
+<body>
+
+    <h1>Mi Edad</h1>
+    <p id="resultado"></p>
+
+    <script>
+
+    var fechaActual = new Date();
+
+    var miNacimiento = new Date(1993, 5, 28);
+
+    var diferenciaMilisegundos = fechaActual - miNacimiento;
+
+    var edad = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 365));
+
+    document.getElementById("resultado").innerHTML = `Tengo ${edad} años`
+
+    </script>
+
+</body>
+</html>

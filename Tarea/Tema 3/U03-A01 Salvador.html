@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1</title>
+</head>
+<body>
+
+    <h1>Tiempo Restante hasta Fin de Año</h1>
+    <p id="diasRestantes"></p>
+    <p id="milisegundosRestantes"></p>
+
+    <script>
+
+        // Obtén la fecha actual
+
+        var fechaActual = new Date();
+
+        // Sacamos la fecha de fin de año
+
+        /* el año con fechaActual.getFullYear()
+        /* el mes con 11 pues es el mes de diciembre
+        /* el dia con 31 que es el ultimo dia de diciembre
+        /* la hora con 23 que es la ultima antes del cambio de hora
+        /* minuto con 59 que es el ultimo minuto
+        /* segundo 59 que es el ultimo segundo
+        /* milisegundo con 999 que es el ultimo milisegundo
+        /* con todo esto sacamos cuando es fin de año
+        */
+
+        var finDeAno = new Date(fechaActual.getFullYear(), 11, 31, 23, 59, 59, 999);
+
+        // Calcula la diferencia en milisegundos
+
+        var diferenciaMilisegundos = finDeAno - fechaActual;
+
+        // Calcula la diferencia en días
+
+        /* dividimos los milisegundos sacados redondeados hacia abajo contra
+        /* 1000 que son los milisegundos de un segundo
+        /* 60 los segundos de unn minuto
+        /* 60 los minutos de una hora
+        /* 24 que son las horas de un dia
+        /* la resta dira los milisegundos que quedan para fin de año
+        */
+
+        var diasRestantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+        // Muestra la información en la página
+
+        document.getElementById("diasRestantes").innerHTML = `Días Restantes hasta Fin de Año: ${diasRestantes} días`;
+        document.getElementById("milisegundosRestantes").innerHTML = `Milisegundos Restantes hasta Fin de Año: ${diferenciaMilisegundos} milisegundos`;
+
+    </script>
+
+</body>
+</html>

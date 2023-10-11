@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 5</title>
+</head>
+<body>
+
+    <h1 id="hora"></h1>
+
+    <script>
+
+    function reloj() {
+
+
+        var horaActual = new Date();
+
+        var hora = horaActual.getHours();
+
+        var minutos = horaActual.getMinutes();
+
+            if (minutos < 10) { minutos = "0"+minutos};
+
+        var segundos = horaActual.getSeconds();
+
+            if (segundos < 10) { segundos = "0"+segundos};
+
+        var ampm = (hora >= 12 ? "PM" : "AM");
+
+            if (hora > 12 ) {hora -= 12 };
+
+            if (hora < 10) { hora = "0"+hora};
+
+        var reloj = hora + ":" + minutos + ":" + segundos + " " + ampm;
+
+        document.getElementById("hora").innerHTML = reloj;
+
+    }
+
+    setInterval(reloj, 1000);
+
+    </script>
+
+</body>
+</html>
