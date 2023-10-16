@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6</title>
+</head>
+<body>
+
+    <h1>Calculadora de horas</h1>
+
+    <label for="zonaHoraria">Selecciona una zona horaria: </label>
+    <select id="zonaHoraria">
+
+        <option value="-12">UTC -12: Línea internacional de fecha del oeste</option>
+        <option value="-11">UTC -11: Isla Midway, Samoa</option>
+        <option value="-10">UTC -10: Hawái</option>
+        <option value="-9">UTC -9: Alaska</option>
+        <option value="-8">UTC -8: Hora del Pacífico (USA y Canadá)</option>
+        <option value="-7">UTC -7: Hora de las montañas rocosas (USA y Canadá)</option>
+        <option value="-6">UTC -6: América central</option>
+        <option value="-5">UTC -5: Hora central (USA y Canadá)</option>
+        <option value="-4">UTC -4: Hora del Atlántico (Canadá)</option>
+        <option value="-3">UTC -3: Buenos Aires, Asunción, Brasilia, Montevideo</option>
+        <option value="-2">UTC -2: Atlántico central</option>
+        <option value="-1">UTC -1: Azores</option>
+        <option value="0">UTC 0: Hora del meridiano de Greenwich, Londres, Dublín</option>
+        <option value="1">UTC +1: París, Madrid, Barcelona, Roma</option>
+        <option value="2">UTC +2: El Cairo</option>
+        <option value="3">UTC +3: Nairobi</option>
+        <option value="4">UTC +4: Bakú</option>
+        <option value="5">UTC +5: Ekaterimburgo</option>
+        <option value="6">UTC +6: Astana</option>
+        <option value="7">UTC +7: Bangkok</option>
+        <option value="8">UTC +8: Ulán Bator</option>
+        <option value="9">UTC +9: Tokio</option>
+        <option value="10">UTC +10: Sídney</option>
+        <option value="11">UTC +11: Islas Salomón</option>
+        <option value="12">UTC +12: Wellington</option>
+
+    </select>
+
+    <button onclick="mostrarHora()">Obtener hora local</button>
+
+    <p id="horaLocal"></p>
+
+    <script>
+
+        function mostrarHora() {
+
+            var eleccion = document.getElementById("zonaHoraria");
+            var zonaHoraria = parseFloat(eleccion.value);
+            var horaMilisegundos = new Date();
+            var horaActual = new Date(horaMilisegundos.getTime() + (zonaHoraria * 60 * 60 * 1000));
+            var horaLocal = horaActual.toLocaleTimeString();
+
+            document.getElementById("horaLocal").textContent = `Hora local: ${horaLocal}`;
+        }
+
+    </script>
+
+</body>
+</html>
+
+
