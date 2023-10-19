@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 8</title>
+</head>
+<body>
+
+    <h1>Calcular área de un círculo</h1>
+
+    <label for="radioCirculo">Introduce el radio</label>
+    <input type="text" id="radioCirculo">
+    <br>
+    <button onclick="generarAreaCirculo();">Generar</button>
+    <p id="resultadoCirculo"></p>
+
+    <h1>Calcular área de un triángulo</h1>
+
+    <label for="baseTriangulo">Introduce la base</label>
+    <input type="text" id="baseTriangulo">
+    <br>
+    <label for="alturaTriangulo">Introduce la altura</label>
+    <input type="text" id="alturaTriangulo">
+    <br>
+    <button onclick="generarAreaTriangulo();">Generar</button>
+    <p id="resultadoTriangulo"></p>
+
+    <script>
+
+        function generarAreaCirculo() {
+
+            var radio = parseFloat(document.getElementById("radioCirculo").value);
+            var area = Math.PI * radio * radio;
+            
+            document.getElementById("resultadoCirculo").innerHTML = `El área de un círculo es ${area.toFixed(2)} cm²`;
+
+        }
+
+        function generarAreaTriangulo() {
+
+            var base = parseFloat(document.getElementById("baseTriangulo").value);
+            var altura = parseFloat(document.getElementById("alturaTriangulo").value);
+            var area = (base * altura) / 2;
+
+            document.getElementById("resultadoTriangulo").innerHTML = `El área de un triángulo es ${area.toFixed(2)} cm²`;
+
+        }
+
+    </script>
+</body>
+</html>

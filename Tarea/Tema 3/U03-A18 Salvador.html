@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 18</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: white;
+            text-align: center;
+        }
+
+        h1 {
+
+            color: black;
+        }
+
+        table {
+
+            border-spacing: 0;
+            border-collapse: separate;
+            border-radius: 10px;
+            margin: 20px auto;
+            background-color: orange;
+
+            border: 1px solid;
+            color: black;
+        }
+
+        th, td {
+
+            padding: 15px;
+        }
+
+        th {
+
+            background-color: gray;
+            color: white;
+        }
+
+        button {
+
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            background-color: greenyellow;
+            border: 1px solid black;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        button:hover {
+
+            background-color: white;
+        }
+
+        input[type="text"] {
+
+            width: 80%;
+            padding: 5px;
+            font-size: 20px;
+            text-align: left;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <h1>Calculadora</h1>
+    <table>
+
+        <tr>
+            <td colspan="4"><input type="text" id="pantalla" disabled></td>
+        </tr>
+        <tr>
+
+            <td><button onclick="raizCuadrada('√')">√</button></td>
+            <td><button onclick="logaritmo('log')">log</button></td>
+            <td><button onclick="numeroPi('π')">π</button></td>
+            <td><button onclick="potenciaDe3('x³')">x³</button></td>
+
+        </tr>
+
+        <tr>
+
+            <td><button onclick="seno('sin')">sin</button></td>
+            <td><button onclick="coseno('cos')">cos</button></td>
+            <td><button onclick="tangente('tan')">tan</button></td>
+            <td><button onclick="potenciaDe2('x²')">x²</button></td>
+            
+        </tr>
+
+        <tr>
+
+            <td><button onclick="limpiarCalculadora()">C</button></td>
+            <td><button onclick="botonCalculadora('/')">/</button></td>
+            <td><button onclick="botonCalculadora('*')">*</button></td>
+            <td><button onclick="borrarCaracter()">DEL</button></td>
+
+        </tr>
+
+        <tr>
+
+            <td><button onclick="botonCalculadora('7')">7</button></td>
+            <td><button onclick="botonCalculadora('8')">8</button></td>
+            <td><button onclick="botonCalculadora('9')">9</button></td>
+            <td><button onclick="botonCalculadora('-')">-</button></td>
+
+        </tr>
+
+        <tr>
+
+            <td><button onclick="botonCalculadora('4')">4</button></td>
+            <td><button onclick="botonCalculadora('5')">5</button></td>
+            <td><button onclick="botonCalculadora('6')">6</button></td>
+            <td><button onclick="botonCalculadora('+')">+</button></td>
+
+        </tr>
+
+        <tr>
+
+            <td><button onclick="botonCalculadora('1')">1</button></td>
+            <td><button onclick="botonCalculadora('2')">2</button></td>
+            <td><button onclick="botonCalculadora('3')">3</button></td>
+            <td rowspan="2"><button onclick="calcularResultado()">=</button></td>
+
+        </tr>
+
+        <tr>
+
+            <td><button onclick="botonCalculadora('0')">0</button></td>
+            <td><button onclick="botonCalculadora('.')">.</button></td>
+            <td><button onclick="botonCalculadora('%')">%</button></td>
+            
+        </tr>
+
+    </table>
+
+    <script>
+
+        var pantalla = document.getElementById('pantalla');
+        var calculo = '';
+    
+        function botonCalculadora(valor) {
+
+            calculo += valor;
+            pantalla.value = calculo;
+
+        }
+    
+        function limpiarCalculadora() {
+
+            pantalla.value = '';
+            calculo = '';
+
+        }
+    
+        function borrarCaracter() {
+
+            calculo = calculo.slice(0, -1);
+            pantalla.value = calculo;
+
+        }
+
+        function raizCuadrada(valor) {
+        pantalla.value = Math.sqrt(parseFloat(calculo));
+        calculo = pantalla.value;
+
+        }
+
+        function logaritmo(valor) {
+
+            pantalla.value = Math.log10(parseFloat(calculo));
+            calculo = pantalla.value;
+
+        }
+
+        function numeroPi(valor) {
+
+            calculo += Math.PI;
+            pantalla.value = calculo;
+
+        }
+
+        function potenciaDe2(valor) {
+
+        pantalla.value = Math.pow(parseFloat(calculo), 2);
+        calculo = pantalla.value;
+
+        }
+
+        function potenciaDe3(valor) {
+
+            pantalla.value = Math.pow(parseFloat(calculo), 3);
+            calculo = pantalla.value;
+
+        }
+
+        function seno(valor) {
+
+            pantalla.value = Math.sin(parseFloat(calculo));
+            calculo = pantalla.value;
+
+        }
+
+        function coseno(valor) {
+
+            pantalla.value = Math.cos(parseFloat(calculo));
+            calculo = pantalla.value;
+
+        }
+
+        function tangente(valor) {
+
+            pantalla.value = Math.tan(parseFloat(calculo));
+            calculo = pantalla.value;
+
+        }
+    
+        function calcularResultado() {
+
+            try {
+                var resultado = eval(calculo); // Evalúa la expresión matemática
+                pantalla.value = resultado;
+                calculo = resultado.toString();
+            } catch (error) {
+                pantalla.value = 'Error';
+                calculo = '';
+            }
+        }
+
+    </script>
+    
+
+</body>
+</html>
