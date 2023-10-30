@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 11</title>
+</head>
+<body>
+
+    <h2>Comprobar mayusculas o minusculas</h2>
+
+    <label for="palabra">Introduce una palabra</label>
+    <input type="text" id="palabra" name="palabra">
+
+    <button onclick="comprobarPalabra()">Comprobar</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function comprobarPalabra() {
+
+        var palabra = document.getElementById("palabra").value;
+        var palabraMayus = palabra.toUpperCase();
+        var palabraMinus = palabra.toLowerCase();
+
+        if (palabra === palabraMayus) {
+            document.getElementById("resultado").innerHTML = "Todas las letras son mayusculas";
+        }
+        else if (palabra === palabraMinus) {
+            document.getElementById("resultado").innerHTML = "Todas las letras son minusculas";
+        }
+        else {
+            document.getElementById("resultado").innerHTML = "La palabra contiene mayusculas y minusculas";
+        }
+        }
+
+    </script>
+
+
+
+</body>
+</html>

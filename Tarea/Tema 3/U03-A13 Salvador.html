@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 13</title>
+</head>
+<body>
+
+    <h2>Objetos Booleanos</h2>
+    <label for="eleccion">Elige</label>
+    <select id="eleccion" name="eleccion">
+        <option value="objeto1" id="objeto1">1</option>
+        <option value="objeto2" id="objeto2">2</option>
+        <option value="objeto3" id="objeto3">3</option>
+        <option value="objeto4" id="objeto4">4</option>
+        <option value="objeto5" id="objeto1">5</option>
+        <option value="objeto6" id="objeto1">6</option>
+        <option value="objeto7" id="objeto7">7</option>
+        <option value="objeto8" id="objeto8">8</option>
+        <option value="objeto9" id="objeto9">9</option>
+        <option value="objeto10" id="objeto1">10</option>
+    </select>
+
+    <button onclick="verificarBooleano()">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        var objetos = {
+                    objeto1: new Boolean(false),
+                    objeto2: new Boolean(false),
+                    objeto3: new Boolean(false),
+                    objeto4: new Boolean(false),
+                    objeto5: new Boolean(false),
+                    objeto6: new Boolean(true),
+                    objeto7: new Boolean(true),
+                    objeto8: new Boolean(true),
+                    objeto9: new Boolean(true),
+                    objeto10: new Boolean(true)
+                };
+
+        function verificarBooleano() {
+
+            var eleccion = document.getElementById("eleccion").value;
+
+            document.getElementById("resultado").innerHTML = `El ${eleccion} es ${objetos[eleccion]}`
+
+        }
+
+    </script>
+
+
+</body>
+</html>

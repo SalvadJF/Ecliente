@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 10</title>
+</head>
+
+<body>
+
+    <h2>Extractor de Frase</h2>
+    <p>Por favor, ingresa una frase:</p>
+
+    <input type="text" id="fraseInput">
+
+    <p>Marca de inicio:</p>
+    <input type="text" id="inicioInput">
+
+    <p>Marca de fin:</p>
+    <input type="text" id="finInput">
+
+    <button onclick="extraerFrase()">Extraer</button>
+
+    <p>Frase completa:</p>
+    <p id="fraseCompleta"></p>
+    
+    <p>Frase extraída:</p>
+    <p id="fraseExtraida"></p>
+
+    <script>
+
+        function extraerFrase() {
+
+
+            var frase = document.getElementById("fraseInput").value;
+            var inicio = document.getElementById("inicioInput").value;
+            var fin = document.getElementById("finInput").value;
+
+            var inicioIndex = frase.indexOf(inicio);
+
+            if (inicioIndex !== -1) {
+
+                var finIndex = frase.indexOf(fin, inicioIndex);
+
+                if (finIndex !== -1) {
+
+                    var fraseExtraida = frase.slice(inicioIndex + inicio.length, finIndex);
+
+
+                    document.getElementById("fraseCompleta").innerHTML = frase;
+                    document.getElementById("fraseExtraida").innerHTML = fraseExtraida;
+                } else {
+                    alert("La marca de fin no se encontró en la frase.");
+                }
+            } else {
+                alert("La marca de inicio no se encontró en la frase.");
+            }
+        }
+
+    </script>
+    
+</body>
+
+</html>

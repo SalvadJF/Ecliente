@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 14</title>
+</head>
+<body>
+
+    <h2>Introduce una hora en formato hh:mm:ss o hh:mm:</h2>
+  <input type="text" id="hora">
+  <button onclick="validarHora()">Validar</button>
+  <p id="resultado"></p>
+
+  <script>
+    function validarHora() {
+
+      var hora = document.getElementById("hora").value;
+      var horaRegex = /^(?:[01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
+
+      if (horaRegex.test(hora)) {
+        document.getElementById("resultado").textContent = "Formato correcto";
+      } else {
+        document.getElementById("resultado").textContent = "Formato incorrecto";
+      }
+    }
+  </script>
+
+</body>
+</html>
