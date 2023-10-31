@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 16</title>
+</head>
+
+<body>
+
+  <h1>Validación de día de la semana y número</h1>
+  <label for="entrada">Ingresa un día de la semana y un número (ejemplo: lunes 31):</label>
+  <br>
+  <input type="text" id="entrada">
+  <br>
+  <button onclick="validarSemana()">Validar</button>
+  <p id="resultado"></p>
+
+  <script>
+    
+    function validarSemana() {
+
+        var regexSemana = /^(lunes|martes|miércoles|jueves|viernes|sábado|domingo)\s(0[1-9]|[12][0-9]|3[01])$/;
+        /*
+                  \s                // Coincide con un espacio en blanco
+                    0[1-9]          // Coincide con días del 01 al 09
+                    |               // Alternancia
+                    [12][0-9]       // Coincide con días del 10 al 29
+                    |               // Alternancia
+                    3[01]           // Coincide con días 30 y 31
+        */
+       
+        var dia = document.getElementById("entrada").value;
+        var resultadoElement = document.getElementById("resultado");
+
+
+        if (regexSemana.test(dia)) {
+          document.getElementById("resultado").innerHTML = "Expresión válida";
+        } else {
+          document.getElementById("resultado").innerHTML = "Expresión no válida";
+        }
+    }
+  </script>
+</body>
+
+</html>
