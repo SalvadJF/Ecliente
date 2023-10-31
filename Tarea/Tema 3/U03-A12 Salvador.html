@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 12</title>
+</head>
+<body>
+
+    <h2>Buscar y Reemplazar Palabra</h2>
+
+    <label for="frase">Ingrese una frase:</label>
+    <input type="text" id="frase">
+    <br>
+    <label for="palabra">Palabra a buscar:</label>
+    <input type="text" id="palabra">
+    <br>
+    <button onclick="buscarReemplazar()">Buscar y Reemplazar</button>
+    <br>
+    <p id="resultado"></p>
+    <p id="resultado2"></p>
+
+    <script>
+
+
+        function buscarReemplazar() {
+
+            var frase = document.getElementById("frase").value;
+            var palabraBuscada = document.getElementById("palabra").value;
+            var posicion = frase.indexOf(palabraBuscada);
+
+            if (posicion !== -1) {
+
+                var longitudPalabra = palabraBuscada.length;
+                var nuevaFrase = frase.replace(palabraBuscada, 'dwecl');
+                document.getElementById("resultado").innerHTML = `La palabra ${palabraBuscada} se encuentra en la posición ${posicion} de la frase. La palabra tiene ${longitudPalabra} caracteres.`;
+                document.getElementById("resultado2").innerHTML = nuevaFrase;
+            }
+            else {
+                document.getElementById("resultado").innerHTML = `La palabra ${palabraBuscada} no se encuentra en la frase.`;
+            }
+        }
+    </script>
+
+</body>
+</html>

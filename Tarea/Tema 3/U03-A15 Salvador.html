@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 15</title>
+</head>
+
+<body>
+
+  <h1>Validar Matrícula</h1>
+  <input type="text" id="matricula" placeholder="Matrícula (0000 AAA)">
+  <button onclick="validarMatricula()">Validar</button>
+  <p id="resultado"></p>
+
+  <script>
+
+    function validarMatricula() {
+
+      var matriculaInput = document.getElementById('matricula');
+      var matricula = matriculaInput.value;
+
+      // Expresión regular para validar la matrícula
+      var regex = /^[0-9]{4}\s[A-Z]{3}$/;
+
+      if (regex.test(matricula)) {
+        document.getElementById("resultado").innerHTML = 'La matrícula es válida.';
+      } else {
+        document.getElementById("resultado").innerHTML = 'La matrícula no es válida. Formato incorrecto.';
+      }
+    }
+
+  </script>
+</body>
+
+</html>

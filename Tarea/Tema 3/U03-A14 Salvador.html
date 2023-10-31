@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 14</title>
-</head>
-<body>
 
-    <h2>Introduce una hora en formato hh:mm:ss o hh:mm:</h2>
-  <input type="text" id="hora">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 14</title>
+</head>
+
+<body>
+  <h1>Validación de Hora</h1>
+  <label for="horaInput">Introduce una hora (hh:mm:ss o hh:mm):</label>
+  <input type="text" id="horaInput">
   <button onclick="validarHora()">Validar</button>
   <p id="resultado"></p>
 
   <script>
     function validarHora() {
+      var horaInput = document.getElementById("horaInput").value;
+      var regex = /^(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/;
+            /*
+            ^: Coincide con el inicio de la cadena.
+            (?:[01]\d|2[0-3]):[0-5]\d: Coincide con hh:mm (00:00 - 23:59)
+            (?::[0-5]\d)?: Coincide opcionalmente con :ss (segundos)
+            $: Coincide con el final de la cadena.
+            */
 
-      var hora = document.getElementById("hora").value;
-      var horaRegex = /^(?:[01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
-
-      if (horaRegex.test(hora)) {
-        document.getElementById("resultado").textContent = "Formato correcto";
+      if (regex.test(horaInput)) {
+        document.getElementById("resultado").innerHTML = "Formato correcto";
       } else {
-        document.getElementById("resultado").textContent = "Formato incorrecto";
+        document.getElementById("resultado").innerHTML = "Formato incorrecto";
       }
     }
   </script>
-
 </body>
+
 </html>
