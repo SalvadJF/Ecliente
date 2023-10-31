@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 17</title>
+</head>
+
+<body>
+
+  <h2>Encontrar Primeras Palabras</h2>
+  <textarea id="texto" style="width: 200px; height: 200px;" placeholder="Las frases deben acabar en . - ! - ? para ser validas"></textarea>
+  <button onclick="encontrarPalabra()">Encontrar</button>
+  <p id="resultado"></p>
+
+  <script>
+
+    function encontrarPalabra() {
+
+      var texto = document.getElementById("texto").value;
+      var expresion = /[^\.!?\n]*[\.!?\n]/g;
+      // Se considera que una frase se acaba cuando termina en :
+      // . , ! o ? como esta en la expresion regular
+
+      var frases = texto.match(expresion);
+      // Con el metodo .match creamos un array filtrando por los parametros que pedimos por la expresion regular
+
+      if (frases) {
+        var primerasPalabras = frases.map(frase => {
+          var palabras = frase.split(' ');
+          return palabras[0];
+          });
+        // Con el metodo .map filtramos los elementos del array anteriormente creado y buscamos la primera palabra de cada frase.
+
+        var resultado = primerasPalabras.join(' ');
+        // Unimos los elementos del array en una cadena
+
+        document.getElementById("resultado").innerHTML = resultado;
+
+      } else {
+        document.getElementById("resultado").innerHTML = "No se encontraron frases.";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

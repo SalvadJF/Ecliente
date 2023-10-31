@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 20</title>
+</head>
+
+<body>
+
+    <h2>Ventanas</h2>
+    <label>Abrir Ventana</label>
+    <button onclick="abrirVentana()">Comenzar</button>
+
+    <script>
+        
+        function abrirVentana() {
+
+            var ventana = window.open('', '', 'width=300, height=200');
+            // Si no pongo los dos espacios no se abre la ventana, sino que sustituye la ventana actual
+            ventana.name = 'Ventana Salvador';
+            ventana.location.href = 'https://es.wikipedia.org/wiki/Wikipedia:Portada';
+        }
+        
+    </script>
+
+</body>
+
+</html>
