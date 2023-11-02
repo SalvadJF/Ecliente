@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 21</title>
+</head>
+
+<body>
+
+    <h2>Uso del Navigator</h2>
+
+    <label>Apartado 1</label>
+    <!-- 1. 
+        Utilizando el objeto Navigator. 
+        Realiza un código que indique todas las 
+        características o propiedades del Navegador.
+    -->
+    <button onclick="apartado1()">Mostrar</button>
+    <br>
+
+    <label>Apartado 2</label>
+    <!--2. 
+        Realiza un código que indique la información 
+        de pantalla utilizada por el usuario
+    -->
+    <button onclick="apartado2()">Mostrar</button>
+    <br>
+
+    <label>Apartado 3</label>
+    <!-- 3. 
+        ¿Qué dimensiones tienen las barras de 
+        herramientas de tu navegador?
+    -->
+    <button onclick="apartado3()">Mostrar</button>
+    <p id="resultado"></p>
+    <br>
+
+    <label>Apartado 4</label>
+    <!-- 4. Realiza un script que realice 
+        lo siguiente: (Imagen de ejemplo)
+    -->
+    <p>Selecciona un color para el fondo de la pagina</p>
+    <br>
+    <select id="color">
+        <option value="rojo">Rojo</option>
+        <option value="azul">Azul</option>
+        <option value="amarillo">Amarillo</option>
+        <option value="verde">Verde</option>
+    </select>
+    <button onclick="apartado4()">Modificar</button>
+
+    <script>
+
+        function apartado1() {
+
+            var info = `
+
+                <b>Navegador</b> ${navigator.appCodeName} <br>
+                <b>APP</b> ${navigator.appName} <br>
+                <b>Version</b> ${navigator.appVersion} <br>
+                <b>Idioma</b> ${navigator.language} <br>
+                <b>Plataforma</b> ${navigator.platform} <br>
+                <b>Producto</b> ${navigator.product} <br>
+                <b>Agente</b> ${navigator.userAgent} <br>
+                <b>Cookies</b> ${navigator.cookieEnabled} <br>
+                <b>En linea</b> ${navigator.onLine} <br>
+            `;
+
+            if (navigator.javaEnabled) {
+                info += "El navegador soporta Java";
+            } else {
+                info += "El navegador no soporta Java";
+            }
+
+            // Crea una ventana nueva  con la informacion del navegador
+            var ventana1 = window.open("", "");
+            ventana1.document.write(info);
+        }
+
+        function apartado2() {
+
+            var info2 = `
+
+                <b>Alto</b> ${screen.availHeight} <br>
+                <b>Ancho</b> ${screen.availWidth} <br>
+                <b>Color</b> ${screen.colorDepth} <br>
+                <b>AlturaTotal</b> ${screen.height} <br>
+                <b>AnchuraTotal</b> ${screen.width} <br>
+            `;
+
+            // Crea una ventana nueva  con la informacion del navegador
+            var ventana2 = window.open("", "");
+            ventana2.document.write(info2);
+
+        }
+
+        function apartado3() {
+
+            document.getElementById("resultado").innerHTML = `El tamaño de la barra de herramientas deberia ser igual al ancho del navegador, el cual de este es ${screen.width}`;
+        }
+
+        function apartado4() {
+            
+            var color = document.getElementById("color").value;
+
+            switch (color) {
+
+                case "rojo":
+
+                    document.bgColor = "red";
+                    break;
+
+                case "azul":
+
+                    document.bgColor = "blue";
+                    break;
+
+                case "amarillo":
+
+                    document.bgColor = "yellow";
+                    break;
+
+                case "verde":
+
+                    document.bgColor = "green";
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
