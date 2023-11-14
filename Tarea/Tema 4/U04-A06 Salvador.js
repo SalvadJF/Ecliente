@@ -17,19 +17,25 @@ var Notas_Alumnos = [];
                 return;
             }
 
+            // Validacion para que los campos no esten vacios
+            if (nombre == "" | nota1 == ""| nota2 == ""| nota3 == "") {
+                document.getElementById("resultado").innerHTML = `Debe rellenar todos los campos`;
+                return
+            }
+
             // Validacion que no se repitan las asignaturas
             if (asignatura1 === asignatura2 || asignatura1 === asignatura3 || asignatura2 === asignatura3) {
                 document.getElementById("resultado").innerHTML = `No se pueden repetir las asignaturas`;
                 return;
             }
 
-            // Creamos el objeto alumno
-            let alumno = {
-                Nombre: nombre,
-                [asignatura1]: nota1,
-                [asignatura2]: nota2,
-                [asignatura3]: nota3
-            };
+            // Creamos el Array alumno con los datos
+            var alumno = [
+                nombre,
+                nota1,
+                nota2,
+                nota3
+            ];
 
             // Metemos el alumno en el array
             Notas_Alumnos.push(alumno);
