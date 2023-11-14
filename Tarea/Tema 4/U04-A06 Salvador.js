@@ -1,6 +1,14 @@
 var Notas_Alumnos = [];
 
         function introducir() {
+
+            if (Notas_Alumnos.length == 5) {
+
+                document.getElementById("resultado").innerHTML = `Ya hay 5 alumnos en la base de datos`;
+                return
+
+            }
+
             let nombre = document.getElementById("nombre").value;
             let nota1 = parseFloat(document.getElementById("nota1").value);
             let asignatura1 = document.getElementById("asignatura1").value;
@@ -29,6 +37,8 @@ var Notas_Alumnos = [];
                 return;
             }
 
+        
+
             // Creamos el Array alumno con los datos
             var alumno = [
                 nombre,
@@ -53,6 +63,13 @@ var Notas_Alumnos = [];
         }
 
         function mostrarNotas() {
+
+            if (Notas_Alumnos.length < 5) {
+                
+                document.getElementById("resultado").innerHTML = `Deben haber almenos 5 alumnos en la base de datos`;
+                return
+
+            }
             let tableBody = document.querySelector("#tablaNotas tbody");
 
             // Limpiamos la tabla
