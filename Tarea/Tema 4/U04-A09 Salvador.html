@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 9</title>
+    <script type="text/javascript" src="U04-A09 Salvador.js"></script>
+</head>
+
+<body>
+
+    <h2>Objeto Vehiculo</h2>
+
+    <fieldset>
+        <label name="vehiculo">Vehìculo</label>
+        <input id="marca" placeholder="Marca">
+        <input id="modelo" placeholder="Modelo">
+        <input id="color" placeholder="Color">
+        <input id="ano" placeholder="Año">
+        <button onclick="crearVehiculo()">Crear Vehiculo</button>
+        <br>
+        <button onclick="mostrarMarcas()">Mostrar Marca</button>
+        <br>
+        <button onclick="mostrarColores()">Mostrar Color</button>
+        <br>
+        <button onclick="acelerarCoche()">Acelerar</button>
+        <br>
+        <label>Cilindrada</label>
+        <input id="cilindrada">
+        <select name="cilindro">
+            <script>
+                Coches.marca.forEach(valor => {document.getElementById("cilindro").innerHTML += `<option>${valor}</option>`;})
+            </script>
+        </select>
+        <button onclick="asignarCilindrada()">Asignar Cilindrada</button>
+        <br>
+        <button onclick="">Frenar</button>
+        <br>
+        <button onclick="">Mostrar Propiedades</button>
+
+    </fieldset>
+
+    <div id="resultado"></div>
+
+
+</body>
+
+</html>

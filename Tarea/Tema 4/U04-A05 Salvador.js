@@ -1,44 +1,39 @@
+function manipular() {
+  var palabras = document.getElementById("palabras").value;
 
-    function manipularPalabras() {
-      // Obtener las palabras ingresadas por el usuario
-      var palabras = document.getElementById("palabras").value;
-      
-      // Dividir las palabras en un array
-      var palabrasArray = palabras.split(" ");
+  var arrayPalabras = palabras.split(" ");
 
-      // Todas las palabras
-      var todasPalabras = palabrasArray.join(", ");
+  var palabrasAlReves = [...arrayPalabras].map((palabra) =>
+    palabra.split("").reverse().join("")
+  );
 
-      // Todas las palabras al revés
-      var palabrasAlReves = palabrasArray.map(function(palabra) {
-        return palabra.split("").reverse().join("");
-      }).join(", ");
+  var palabrasDescendente = [...arrayPalabras].reverse();
 
-      // La primera palabra ingresada
-      var primeraPalabra = palabrasArray[0];
+  var ventana = window.open("", "Resultado", "width=600, height=600");
 
-      // La última palabra ingresada
-      var ultimaPalabra = palabrasArray[palabrasArray.length - 1];
+  ventana.document.write(`<h2>Resultado</h2>`);
 
-      // Número de palabras en el array
-      var numPalabras = palabrasArray.length;
+  ventana.document.write(
+    `<p>Todas las palabras ${arrayPalabras.join(", ")}</p>`
+  );
 
-      // Palabras ordenadas de la 'a' a la 'z'
-      var palabrasOrdenadasAZ = palabrasArray.slice().sort().join(", ");
+  ventana.document.write(
+    `<p>Palabras al reves ${palabrasAlReves.join(", ")}</p>`
+  );
 
-      // Palabras ordenadas de la 'z' a la 'a'
-      var palabrasOrdenadasZA = palabrasArray.slice().sort(function(a, b) {
-        return b.localeCompare(a);
-      }).join(", ");
+  ventana.document.write(`<p>Primera palabra ${arrayPalabras[0]} </p>`);
 
-      // Mostrar resultados en una nueva ventana
-      var resultadosVentana = window.open("", "Resultados", "width=600,height=400");
-      resultadosVentana.document.write("<h2>Resultados:</h2>");
-      resultadosVentana.document.write("<p><strong>Todas las palabras:</strong> " + todasPalabras + "</p>");
-      resultadosVentana.document.write("<p><strong>Todas las palabras al revés:</strong> " + palabrasAlReves + "</p>");
-      resultadosVentana.document.write("<p><strong>Primera palabra ingresada:</strong> " + primeraPalabra + "</p>");
-      resultadosVentana.document.write("<p><strong>Última palabra ingresada:</strong> " + ultimaPalabra + "</p>");
-      resultadosVentana.document.write("<p><strong>Número de palabras:</strong> " + numPalabras + "</p>");
-      resultadosVentana.document.write("<p><strong>Palabras ordenadas de la 'a' a la 'z':</strong> " + palabrasOrdenadasAZ + "</p>");
-      resultadosVentana.document.write("<p><strong>Palabras ordenadas de la 'z' a la 'a':</strong> " + palabrasOrdenadasZA + "</p>");
-    }
+  ventana.document.write(
+    `<p>Ultima palabra ${arrayPalabras[arrayPalabras.length - 1]} </p>`
+  );
+
+  ventana.document.write(`<p>Numero de palabras ${arrayPalabras.length} </p>`);
+
+  ventana.document.write(
+    `<p>Palabras ordenadas ascendentes ${arrayPalabras.sort().join(", ")} </p>`
+  );
+
+  ventana.document.write(
+    `<p>Palabras ordenadas descendentes ${palabrasDescendente.join(", ")} </p>`
+  );
+}

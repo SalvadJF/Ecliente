@@ -1,44 +1,62 @@
+const IMPAR = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
 
-    function manipularPalabras() {
-      // Obtener las palabras ingresadas por el usuario
-      var palabras = document.getElementById("palabras").value;
-      
-      // Dividir las palabras en un array
-      var palabrasArray = palabras.split(" ");
+var resultado = document.getElementById("resultado");
 
-      // Todas las palabras
-      var todasPalabras = palabrasArray.join(", ");
+var miArray = IMPAR;
 
-      // Todas las palabras al revés
-      var palabrasAlReves = palabrasArray.map(function(palabra) {
-        return palabra.split("").reverse().join("");
-      }).join(", ");
+function restaurarArray() {
+  // Restaura el Array al valor original
+  // Es necesario el [...array] para que copie los valores de este
 
-      // La primera palabra ingresada
-      var primeraPalabra = palabrasArray[0];
+  miArray = [...IMPAR];
 
-      // La última palabra ingresada
-      var ultimaPalabra = palabrasArray[palabrasArray.length - 1];
+  resultado.innerHTML = `Se ha restaurado el Array`;
+}
 
-      // Número de palabras en el array
-      var numPalabras = palabrasArray.length;
+function calcularSumatorio() {
+  // Calcula la suma de todos los valores del array
 
-      // Palabras ordenadas de la 'a' a la 'z'
-      var palabrasOrdenadasAZ = palabrasArray.slice().sort().join(", ");
+  var suma = 0;
+  miArray.forEach(function (i) {
+    suma += i;
+  });
 
-      // Palabras ordenadas de la 'z' a la 'a'
-      var palabrasOrdenadasZA = palabrasArray.slice().sort(function(a, b) {
-        return b.localeCompare(a);
-      }).join(", ");
+  resultado.innerHTML = `El Sumatorio es ${suma}`;
+}
 
-      // Mostrar resultados en una nueva ventana
-      var resultadosVentana = window.open("", "Resultados", "width=600,height=400");
-      resultadosVentana.document.write("<h2>Resultados:</h2>");
-      resultadosVentana.document.write("<p><strong>Todas las palabras:</strong> " + todasPalabras + "</p>");
-      resultadosVentana.document.write("<p><strong>Todas las palabras al revés:</strong> " + palabrasAlReves + "</p>");
-      resultadosVentana.document.write("<p><strong>Primera palabra ingresada:</strong> " + primeraPalabra + "</p>");
-      resultadosVentana.document.write("<p><strong>Última palabra ingresada:</strong> " + ultimaPalabra + "</p>");
-      resultadosVentana.document.write("<p><strong>Número de palabras:</strong> " + numPalabras + "</p>");
-      resultadosVentana.document.write("<p><strong>Palabras ordenadas de la 'a' a la 'z':</strong> " + palabrasOrdenadasAZ + "</p>");
-      resultadosVentana.document.write("<p><strong>Palabras ordenadas de la 'z' a la 'a':</strong> " + palabrasOrdenadasZA + "</p>");
-    }
+function invertirArray() {
+  // Invierte el array
+
+  miArray.reverse();
+
+  resultado.innerHTML = miArray.join(" - ");
+}
+
+function buscarNumero() {
+  // Busca un numero introducido por el usuario ,
+  // muestra la posicion en la que se encuentra y lo elimina del array
+
+  var numero = document.getElementById("numero").value;
+  var posicion = miArray.indexOf(parseInt(numero));
+
+  if (posicion !== -1) {
+    miArray.splice(posicion, 1);
+
+    resultado.innerHTML = `Se a elimina el ${numero} en la posicion ${posicion}`;
+  } else {
+    // Si el numero no se encuentra en el array
+
+    resultado.innerHTML = `El ${numero} no existe en el array`;
+  }
+}
+
+function ordenarAscDesc() {
+  // Muestra por pantalla el array de forma ascendente y descendente
+
+  let ascendente = miArray.sort((a, b) => a - b);
+  let descendente = [...ascendente].reverse();
+  // [...array] es necesario para realizar una copia de este pues reverse afecta al array original
+
+  resultado.innerHTML =     `Ascendente <br> ${ascendente.join(" <br>")} 
+                            <br> Descendente <br> ${descendente.join(" <br>")}`;
+}

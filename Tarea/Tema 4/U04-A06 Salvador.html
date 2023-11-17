@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6</title>
+    <script type="text/javascript" src="U04-A06 Salvador.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Notas alumnos</h1>
+
+    <form>
+        <fieldset>
+            <legend>Introduzca las notas del alumno</legend>
+            <br>
+            <label>Nombre</label>
+            <input type="text" id="nombre">
+            <br>
+            <br>
+            <label>Nota</label>
+            <input type="number" id="nota1">
+            <select id="asignatura1">
+                <option value="lenguaje" selected="selected">Lenguaje de Marcas</option>
+                <option value="programacion" >Programacion</option>
+                <option value="baseDatos">Base de datos</option>
+            </select>
+            <br>
+            <label>Nota</label>
+            <input type="number" id="nota2">
+            <select id="asignatura2">
+                <option value="lenguaje">Lenguaje de Marcas</option>
+                <option value="programacion" selected="selected">Programacion</option>
+                <option value="baseDatos" >Base de datos</option>
+            </select>
+            <br>
+            <label>Nota</label>
+            <input type="number" id="nota3">
+            <select id="asignatura3">
+                <option value="lenguaje" >Lenguaje de Marcas</option>
+                <option value="programacion">Programacion</option>
+                <option value="baseDatos" selected="selected">Base de datos</option>
+            </select>
+            <br>
+            <br>
+            <button type="button" onclick="introducir()">Introducir Datos</button>
+            <button type="button" onclick="mostrarNotas()">Mostrar Notas</button>
+        </fieldset>
+    </form>
+
+    <div id="resultado"></div>
+
+    <table id="tablaNotas">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Lenguaje de Marcas</th>
+                <th>Programacion</th>
+                <th>Base de datos</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</body>
+
+</html>
