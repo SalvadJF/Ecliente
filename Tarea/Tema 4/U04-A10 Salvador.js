@@ -1,33 +1,49 @@
 var Coches = [];
 
-class cocheNuevo {
+class CocheNuevo {
     constructor(marca_in, modelo_in, color_in, ano_in) {
         this.marca = marca_in;
         this.modelo = modelo_in;
         this.color = color_in;
         this.ano = ano_in;
-        this.cilindrada = null; // Default value, change as needed
+        this.cilindrada = null;
     }
 
     mostrarDatos() {
-        console.log(`Marca: ${this.marca}, Modelo: ${this.modelo}, Color: ${this.color}, Año: ${this.ano}`);
+        if (this.cilindrada === null) {
+            document.getElementById(
+                "resultado"
+            ).innerText = `Marca: ${this.marca}, Modelo: ${this.modelo}, Color: ${this.color}, Año: ${this.ano}`;
+        } else {
+            document.getElementById(
+                "resultado"
+            ).innerText = `Marca: ${this.marca}, Modelo: ${this.modelo}, Color: ${this.color}, Año: ${this.ano}, Cilindrada: ${this.cilindrada}`;
+        }
     }
 
     acelerar(velocidad) {
-        console.log(`El coche ha acelerado a ${velocidad} km/h`);
+        document.getElementById(
+            "resultado"
+        ).innerText = `El coche ha acelerado a ${velocidad} km/h`;
     }
 
     arrancar() {
-        console.log(`El coche de marca ${this.marca}, modelo ${this.modelo}, color ${this.color} ha arrancado.`);
+        document.getElementById(
+            "resultado"
+        ).innerText = `El coche de marca ${this.marca}, modelo ${this.modelo}, color ${this.color} ha arrancado.`;
     }
 
     asignarCilindrada(cilindrada) {
         this.cilindrada = cilindrada;
-        console.log(`Cilindrada asignada: ${this.cilindrada}`);
+        document.getElementById(
+            "resultado"
+        ).innerText = `Cilindrada asignada: ${this.cilindrada}`;
     }
 
     frenar() {
-        console.log(`El coche de marca ${this.marca}, modelo ${this.modelo}, color ${this.color} ha parado.`);
+        document.getElementById(
+            "resultado"
+        ).innerText = `El coche de marca ${this.marca}, modelo ${this.modelo}, color ${this.color} ha parado.`;
     }
 }
 
@@ -37,31 +53,38 @@ function crearVehiculo() {
     let color = document.getElementById("color").value;
     let ano = document.getElementById("ano").value;
 
-    let vehiculo = new cocheNuevo(marca, modelo, color, ano);
+    let vehiculo = new CocheNuevo(marca, modelo, color, ano);
 
     Coches.push(vehiculo);
+    llenarOpciones();
+    document.getElementById("resultado").innerText = `Coche añadido`;
 }
 
-function mostrarPropiedadPorPuntos() {
+function mostrarMarca() {
     if (Coches.length > 0) {
-        document.getElementById("resultado").innerText = "Marca del primer vehículo: " + Coches[0].marca;
+        obtenerCocheSeleccionado().mostrarDatos();
     } else {
-        document.getElementById("resultado").innerText = "No hay vehículos creados.";
+        document.getElementById("resultado").innerText =
+            "No hay vehículos creados.";
     }
 }
 
-function mostrarPropiedadPorCorchetes() {
+function mostrarColor() {
     if (Coches.length > 1) {
-        document.getElementById("resultado").innerText = "Color del segundo vehículo: " + Coches[1]["color"];
+        document.getElementById("resultado").innerText =
+            "Color del segundo vehículo: " + Coches[1].color;
     } else {
-        document.getElementById("resultado").innerText = "Se necesita al menos dos vehículos.";
+        document.getElementById("resultado").innerText =
+            "Se necesita al menos dos vehículos.";
     }
 }
 
 function acelerarCoche() {
     if (Coches.length > 0) {
-        let velocidad = prompt("Ingrese la velocidad a la que desea acelerar el coche:");
-        Coches[0].acelerar(velocidad);
+        let velocidad = prompt(
+            "Ingrese la velocidad a la que desea acelerar el coche:"
+        );
+        obtenerCocheSeleccionado().acelerar(velocidad);
     } else {
         alert("No hay vehículos creados.");
     }
@@ -70,7 +93,7 @@ function acelerarCoche() {
 function asignarCilindrada() {
     if (Coches.length > 0) {
         let cilindrada = document.getElementById("cilindrada").value;
-        Coches[0].asignarCilindrada(cilindrada);
+        obtenerCocheSeleccionado().asignarCilindrada(cilindrada);
     } else {
         alert("No hay vehículos creados.");
     }
@@ -78,35 +101,58 @@ function asignarCilindrada() {
 
 function frenarCoche() {
     if (Coches.length > 0) {
-        Coches[0].frenar();
+        obtenerCocheSeleccionado().frenar();
     } else {
         alert("No hay vehículos creados.");
     }
 }
 
 function mostrarPropiedades() {
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = "";
+
     if (Coches.length > 0) {
-        let htmlTable = "<table border='1'>";
+        // Crear la tabla
+        let table = document.createElement("table");
 
-        // Cabecera de la tabla
-        htmlTable += "<tr>";
+        // Encabezado de la tabla
+        let filaCabecera = table.insertRow(0);
         for (let prop in Coches[0]) {
-            htmlTable += "<th>" + prop + "</th>";
+            let celdaCabecera = document.createElement("th");
+            celdaCabecera.innerText = prop;
+            filaCabecera.appendChild(celdaCabecera);
         }
-        htmlTable += "</tr>";
 
-        // Datos del primer coche
-        htmlTable += "<tr>";
-        for (let prop in Coches[0]) {
-            htmlTable += "<td>" + Coches[0][prop] + "</td>";
-        }
-        htmlTable += "</tr>";
+        // Datos de los coches
+        Coches.forEach((coche) => {
+            let fila = table.insertRow(-1);
+            for (let prop in coche) {
+                let celda = fila.insertCell(-1);
+                celda.innerText = coche[prop];
+            }
+        });
 
-        htmlTable += "</table>";
-
-        // Mostrar la tabla en el elemento con el id "resultado"
-        document.getElementById("resultado").innerHTML = htmlTable;
+        // Agregar la tabla al resultado
+        resultado.appendChild(table);
     } else {
-        document.getElementById("resultado").innerText = "No hay vehículos creados.";
+        alert("No hay vehículos creados.");
     }
+}
+
+function llenarOpciones() {
+    let select = document.getElementById("seleccionarCoche");
+    select.innerHTML = "";
+
+    Coches.forEach((coche, index) => {
+        let option = document.createElement("option");
+        option.value = index;
+        option.text = coche.marca;
+        select.add(option);
+    });
+}
+
+function obtenerCocheSeleccionado() {
+    let select = document.getElementById("seleccionarCoche");
+    let cocheElegido = select.value;
+    return Coches[cocheElegido];
 }
