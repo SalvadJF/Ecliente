@@ -86,21 +86,27 @@ function frenarCoche() {
 
 function mostrarPropiedades() {
     if (Coches.length > 0) {
-        console.log("Using for...in:");
+        let htmlTable = "<table border='1'>";
+
+        // Cabecera de la tabla
+        htmlTable += "<tr>";
         for (let prop in Coches[0]) {
-            console.log(`${prop}: ${Coches[0][prop]}`);
+            htmlTable += "<th>" + prop + "</th>";
         }
+        htmlTable += "</tr>";
 
-        console.log("\nUsing Object.getOwnPropertyNames:");
-        Object.getOwnPropertyNames(Coches[0]).forEach((prop) => {
-            console.log(`${prop}: ${Coches[0][prop]}`);
-        });
+        // Datos del primer coche
+        htmlTable += "<tr>";
+        for (let prop in Coches[0]) {
+            htmlTable += "<td>" + Coches[0][prop] + "</td>";
+        }
+        htmlTable += "</tr>";
 
-        console.log("\nUsing Object.keys:");
-        Object.keys(Coches[0]).forEach((prop) => {
-            console.log(`${prop}: ${Coches[0][prop]}`);
-        });
+        htmlTable += "</table>";
+
+        // Mostrar la tabla en el elemento con el id "resultado"
+        document.getElementById("resultado").innerHTML = htmlTable;
     } else {
-        alert("No hay vehículos creados.");
+        document.getElementById("resultado").innerText = "No hay vehículos creados.";
     }
 }
