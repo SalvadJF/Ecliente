@@ -1,10 +1,9 @@
 body {
-
     margin: 0;
-}
-
-canvas {
-
-    width: 824;
-    height: 641;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
