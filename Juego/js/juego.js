@@ -74,7 +74,7 @@ class Jugador {
 class Alien {
   constructor({ posicion }) {
     this.velocidad = {
-      x: 1.2,
+      x: 2.5,
       y: 0,
     };
     this.posicion = {
@@ -144,14 +144,14 @@ class Cuadricula {
       y: 0,
     };
     this.velocidad = {
-      x: 3.5,
+      x: 6,
       y: 0,
     };
 
     this.aliens = [];
 
-    const columnas = Math.floor(Math.random() * 20 + 5);
-    const lineas = Math.floor(Math.random() * 8 + 2);
+    const columnas = Math.floor(Math.random() * 10 + 5);
+    const lineas = Math.floor(Math.random() * 5 + 2);
 
     this.width = columnas * 30;
 
@@ -211,6 +211,9 @@ const teclas = {
   },
 };
 
+let frames = 0;
+let framesRandom = Math.floor(Math.random() * 500) + 500;
+
 function animar() {
   requestAnimationFrame(animar);
   c.fillStyle = "black";
@@ -229,10 +232,31 @@ function animar() {
 
   cuadriculas.forEach((cuadricula) => {
     cuadricula.actualizar();
-    cuadricula.aliens.forEach((alien) => {
+    cuadricula.aliens.forEach((alien, i) => {
       alien.actualizar({ velocidad: cuadricula.velocidad });
+
+      proyectiles.forEach((proyectil, j) => {
+        if (
+          proyectil.posicion.y - proyectil.radio <= alien.posicion.y + alien.height &&
+          proyectil.posicion.x + proyectil.radio >= alien.posicion.x &&
+          proyectil.posicion.x - proyectil.radio <= alien.posicion.x + alien.width && // Fix: Added + alien.width
+          proyectil.posicion.y + proyectil.radio >= alien.posicion.y
+        ) {
+          setTimeout(() => {
+            const indexAlien = cuadricula.aliens.findIndex((alien2) => alien2 === alien);
+            const indexProyectil = proyectiles.findIndex((proyectil2) => proyectil2 === proyectil);
+
+            if (indexAlien !== -1 && indexProyectil !== -1) {
+              cuadricula.aliens.splice(indexAlien, 1);
+              proyectiles.splice(indexProyectil, 1);
+            }
+          }, 0);
+        }
+      });
     });
   });
+
+
 
   if (teclas.a.presionada && jugador.posicion.x >= 0) {
     jugador.velocidad.x = -7;
@@ -247,6 +271,14 @@ function animar() {
     jugador.velocidad.x = 0;
     jugador.rotacion = 0;
   }
+
+  // Generacion de aliens
+  if (frames % framesRandom === 0) {
+    cuadriculas.push(new Cuadricula());
+    framesRandom = Math.floor(Math.random() * 500) + 500;
+    frames = 0;
+  }
+  frames++;
 }
 
 animar();
@@ -286,21 +318,6 @@ addEventListener("keyup", ({ key }) => {
       break;
     case "d":
       teclas.d.presionada = false;
-      break;
-    case "ArrowUp":
-      teclas.ArrowUp.presionada = false;
-      proyectiles.push(
-        new Proyectil({
-          posicion: {
-            x: jugador.posicion.x + jugador.width / 2,
-            y: jugador.posicion.y,
-          },
-          velocidad: {
-            x: 0,
-            y: -10,
-          },
-        })
-      );
       break;
     default:
       break;
