@@ -173,6 +173,36 @@ class AlienProyectil {
   }
 }
 
+class Particula {
+  constructor({ posicion, velocidad, radio, color }) {
+    this.posicion = posicion;
+    this.velocidad = velocidad;
+
+    this.radio = radio;
+    this.color = color
+    this.opacidad = 1
+  }
+
+  draw() {
+    c.save()
+    c.globalAlpha = this.opacidad
+    c.beginPath();
+    c.arc(this.posicion.x, this.posicion.y, this.radio, 0, Math.PI * 2);
+    c.fillStyle = this.color;
+    c.fill();
+    c.closePath();
+    c.restore()
+  }
+
+  actualizar() {
+    this.draw();
+    this.posicion.x += this.velocidad.x;
+    this.posicion.y += this.velocidad.y;
+
+    this.opacidad -= 0.01
+  }
+}
+
 class Cuadricula {
   constructor() {
     this.posicion = {
@@ -235,6 +265,7 @@ const jugador = new Jugador();
 const cuadriculas = [new Cuadricula()];
 const proyectiles = [];
 const alienProyectiles = [];
+const particulas = [];
 
 const teclas = {
   a: {
@@ -251,15 +282,43 @@ const teclas = {
 let frames = 0;
 let framesRandom = Math.floor(Math.random() * 500) + 500;
 
+function crearParticulas({objeto, color}) {
+  for (let i = 0; i < 15; i++) {
+    particulas.push(new Particula({
+      posicion : {
+        x: objeto.posicion.x + objeto.width / 2,
+        y: objeto.posicion.y + objeto.height / 2
+      },
+      velocidad : {
+        x: (Math.random() - 0.5) * 2,
+        y: (Math.random() - 0.5) * 2
+      },
+      radio : Math.random() * 3,
+      color : color || 'yellow'
+    }))
+  }
+} 
+
 function animar() {
   requestAnimationFrame(animar);
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
   jugador.actualizar();
-  alienProyectiles.forEach((alienProyectil, indice) => {
+
+  particulas.forEach((particula, i) => {
+    if (particula.opacidad <= 0) {
+        setTimeout(() => {
+          particulas.splice(i, 1)
+        }, 0);
+    } else {
+      particula.actualizar()
+    }
+  })
+
+  alienProyectiles.forEach((alienProyectil, i) => {
     if (alienProyectil.posicion.y + alienProyectil.height >= canvas.height) {
       setTimeout(() => {
-        alienProyectiles.splice(indice, 1);
+        alienProyectiles.splice(i, 1);
       }, 0);
     } else {
       alienProyectil.actualizar();
@@ -270,6 +329,10 @@ function animar() {
       && alienProyectil.posicion.x + alienProyectil.width >= jugador.posicion.x
       && alienProyectil.posicion.x <= jugador.posicion.x + jugador.width){
         console.log('Tan Matao')
+        crearParticulas({
+          objeto: jugador,
+          color:  'white'
+        })
       }
   });
 
@@ -306,6 +369,9 @@ function animar() {
             alien.posicion.x + alien.width &&
           proyectil.posicion.y + proyectil.radio >= alien.posicion.y
         ) {
+
+
+
           setTimeout(() => {
             const indexAlien = cuadricula.aliens.findIndex(
               (alien2) => alien2 === alien
@@ -315,6 +381,9 @@ function animar() {
             );
 
             if (indexAlien !== -1 && indexProyectil !== -1) {
+              crearParticulas({
+                objeto: alien
+              });
               cuadricula.aliens.splice(indexAlien, 1);
               proyectiles.splice(indexProyectil, 1);
 
