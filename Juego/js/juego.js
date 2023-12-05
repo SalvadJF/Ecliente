@@ -1,8 +1,10 @@
 const canvas = document.querySelector("canvas");
+const score = document.querySelector('#puntuacion')
 const c = canvas.getContext("2d");
 
+
 canvas.width = 1024;
-canvas.height = 576;
+canvas.height = 700;
 
 class Jugador {
   constructor() {
@@ -174,24 +176,25 @@ class AlienProyectil {
 }
 
 class Particula {
-  constructor({ posicion, velocidad, radio, color }) {
+  constructor({ posicion, velocidad, radio, color, difuminacion }) {
     this.posicion = posicion;
     this.velocidad = velocidad;
 
     this.radio = radio;
-    this.color = color
-    this.opacidad = 1
+    this.color = color;
+    this.opacidad = 1;
+    this.difuminacion = difuminacion
   }
 
   draw() {
-    c.save()
-    c.globalAlpha = this.opacidad
+    c.save();
+    c.globalAlpha = this.opacidad;
     c.beginPath();
     c.arc(this.posicion.x, this.posicion.y, this.radio, 0, Math.PI * 2);
     c.fillStyle = this.color;
     c.fill();
     c.closePath();
-    c.restore()
+    c.restore();
   }
 
   actualizar() {
@@ -199,14 +202,15 @@ class Particula {
     this.posicion.x += this.velocidad.x;
     this.posicion.y += this.velocidad.y;
 
-    this.opacidad -= 0.01
+    if (this.difuminacion)
+    this.opacidad -= 0.01;
   }
 }
 
 class Cuadricula {
   constructor() {
     this.posicion = {
-      x: 0,
+      x: canvas.width / 2,
       y: 0,
     };
     this.velocidad = {
@@ -216,8 +220,8 @@ class Cuadricula {
 
     this.aliens = [];
 
-    const columnas = Math.floor(Math.random() * 10 + 5);
-    const lineas = Math.floor(Math.random() * 5 + 2);
+    const columnas = Math.floor(Math.random() * (10 - 3) + 5);
+    const lineas = Math.floor(Math.random() * (10 - 5) + 2);
 
     this.width = columnas * 30;
 
@@ -226,36 +230,25 @@ class Cuadricula {
         this.aliens.push(
           new Alien({
             posicion: {
-              x: i * 30,
+              x: this.posicion.x + i * 30 - this.width / 2,
               y: j * 30,
             },
           })
         );
       }
     }
-    console.log(this.aliens);
   }
+  
 
   actualizar() {
-    if (this.posicion.x + this.width >= canvas.width || this.posicion.x <= 0) {
-      this.velocidad.x = -this.velocidad.x;
-      this.posicion.y += 15;
-    }
-
-    this.posicion.x += this.velocidad.x;
-    this.posicion.y += this.velocidad.y;
-
-    this.velocidad.y = 0;
-
     this.aliens.forEach((alien) => {
       if (
         alien.posicion.x + alien.width >= canvas.width ||
         alien.posicion.x <= 0
       ) {
         alien.velocidad.x = -alien.velocidad.x;
-        alien.posicion.y += 50;
+        alien.posicion.y += 20;
       }
-
       alien.actualizar();
     });
   }
@@ -281,62 +274,102 @@ const teclas = {
 
 let frames = 0;
 let framesRandom = Math.floor(Math.random() * 500) + 500;
+let game = {
+  over: false,
+  active: true
+}
+let puntiacion = 0
+// Fondo de estrellas
+for (let i = 0; i < 100; i++) {
+  particulas.push(
+    new Particula({
+      posicion: {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+      },
+      velocidad: {
+        x: 0,
+        y: 0.3,
+      },
+      radio: Math.random() * 2,
+      color: "cyan",
+    })
+  );
+}
 
-function crearParticulas({objeto, color}) {
+function crearParticulas({ objeto, color, difuminacion }) {
   for (let i = 0; i < 15; i++) {
-    particulas.push(new Particula({
-      posicion : {
-        x: objeto.posicion.x + objeto.width / 2,
-        y: objeto.posicion.y + objeto.height / 2
-      },
-      velocidad : {
-        x: (Math.random() - 0.5) * 2,
-        y: (Math.random() - 0.5) * 2
-      },
-      radio : Math.random() * 3,
-      color : color || 'yellow'
-    }))
+    particulas.push(
+      new Particula({
+        posicion: {
+          x: objeto.posicion.x + objeto.width / 2,
+          y: objeto.posicion.y + objeto.height / 2,
+        },
+        velocidad: {
+          x: (Math.random() - 0.5) * 2,
+          y: (Math.random() - 0.5) * 2,
+        },
+        radio: Math.random() * 3,
+        color: color || "yellow",
+        difuminacion: true
+      })
+    );
   }
-} 
+}
 
 function animar() {
+
+  if (!game.active) return
+
   requestAnimationFrame(animar);
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
   jugador.actualizar();
 
   particulas.forEach((particula, i) => {
-    if (particula.opacidad <= 0) {
-        setTimeout(() => {
-          particulas.splice(i, 1)
-        }, 0);
-    } else {
-      particula.actualizar()
+
+    if (particula.posicion.y - particula.radio >= canvas.height){
+      particula.posicion.x = Math.random() * canvas.width
+      particula.posicion.y = -particula.radio
     }
-  })
+
+    if (particula.opacidad <= 0) {
+      setTimeout(() => {
+        particulas.splice(i, 1);
+      }, 0);
+    } else {
+      particula.actualizar();
+    }
+  });
 
   alienProyectiles.forEach((alienProyectil, i) => {
     if (alienProyectil.posicion.y + alienProyectil.height >= canvas.height) {
       setTimeout(() => {
         alienProyectiles.splice(i, 1);
+        jugador.opacidad = 0
+        game.over = true
       }, 0);
+
+      setTimeout(() => {
+        game.active = false
+      }, 2000);
     } else {
       alienProyectil.actualizar();
     }
 
     if (
-      alienProyectil.posicion.y + alienProyectil.height >= jugador.posicion.y
-      && alienProyectil.posicion.x + alienProyectil.width >= jugador.posicion.x
-      && alienProyectil.posicion.x <= jugador.posicion.x + jugador.width){
-        console.log('Tan Matao')
-        crearParticulas({
-          objeto: jugador,
-          color:  'white'
-        })
-      }
+      alienProyectil.posicion.y + alienProyectil.height >= jugador.posicion.y &&
+      alienProyectil.posicion.x + alienProyectil.width >= jugador.posicion.x &&
+      alienProyectil.posicion.x <= jugador.posicion.x + jugador.width
+    ) {
+      console.log("Tan Matao");
+      crearParticulas({
+        objeto: jugador,
+        color: "white",
+        difuminacion: true,
+      });
+    }
   });
-
-
 
   proyectiles.forEach((proyectil, indice) => {
     if (proyectil.posicion.y - proyectil.radio <= 0) {
@@ -369,9 +402,6 @@ function animar() {
             alien.posicion.x + alien.width &&
           proyectil.posicion.y + proyectil.radio >= alien.posicion.y
         ) {
-
-
-
           setTimeout(() => {
             const indexAlien = cuadricula.aliens.findIndex(
               (alien2) => alien2 === alien
@@ -382,7 +412,8 @@ function animar() {
 
             if (indexAlien !== -1 && indexProyectil !== -1) {
               crearParticulas({
-                objeto: alien
+                objeto: alien,
+                difuminacion: true
               });
               cuadricula.aliens.splice(indexAlien, 1);
               proyectiles.splice(indexProyectil, 1);
@@ -434,6 +465,9 @@ function animar() {
 animar();
 
 addEventListener("keydown", ({ key }) => {
+
+  if (game.over) return;
+
   switch (key) {
     case "a":
       teclas.a.presionada = true;
