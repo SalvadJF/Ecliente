@@ -2,8 +2,9 @@ const canvas = document.querySelector("canvas");
 const puntuacionJugador = document.querySelector("#puntuacion");
 const c = canvas.getContext("2d");
 
-canvas.width = 1024;
-canvas.height = 768;
+canvas.width = window.innerWidth / 1.4;
+canvas.height = window.innerHeight / 1.2;
+
 
 class Jugador {
   constructor() {
@@ -461,8 +462,6 @@ function animar() {
   frames++;
 }
 
-animar();
-
 addEventListener("keydown", ({ key }) => {
   if (game.over) return;
 
@@ -550,7 +549,7 @@ function reiniciar() {
   });
 
   // Reiniciar la velocidad de los aliens y generar nuevas cuadrículas
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 1; i++) {
     cuadriculas.push(new Cuadricula());
   }
 
@@ -560,6 +559,15 @@ function reiniciar() {
   // Start the animation loop again
   animar();
 }
+
+const pantallaInicio = document.getElementById("pantallaInicio");
+
+function comenzarJuego() {
+  pantallaInicio.style.display = "none";
+  animar();
+}
+
+pantallaInicio.addEventListener("click", comenzarJuego);
 
 function finDelJuego() {
   c.fillStyle = "white";
