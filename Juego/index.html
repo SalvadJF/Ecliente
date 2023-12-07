@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Invaders</title> 
+    <title>Space Invaders</title>
     <link rel="stylesheet" href="css/juego.css">
 </head>
+
 <body>
-    <p>
-        <span>Puntuacion:</span><span id="puntuacion">0</span>
-    </p>
-    <canvas>
-        <script type="text/javascript" src="js/juego.js"></script>
-    </canvas>
-    
+    <div class="Juego">
+        <div class="Texto">
+            <p><span>Puntuacion: </span><span id="puntuacion">0</span></p>
+        </div>
+        <canvas>
+            <script type="text/javascript" src="js/juego.js"></script>
+        </canvas>
+        <div class="Botones">
+            <button onclick="reiniciar()" id="iniciar">Nuevo Juego</button>
+        </div>
+    </div>
 </body>
+
 </html>

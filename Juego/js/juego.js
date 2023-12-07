@@ -1,10 +1,9 @@
 const canvas = document.querySelector("canvas");
-const score = document.querySelector('#puntuacion')
+const puntuacionJugador = document.querySelector("#puntuacion");
 const c = canvas.getContext("2d");
 
-
 canvas.width = 1024;
-canvas.height = 700;
+canvas.height = 768;
 
 class Jugador {
   constructor() {
@@ -183,7 +182,7 @@ class Particula {
     this.radio = radio;
     this.color = color;
     this.opacidad = 1;
-    this.difuminacion = difuminacion
+    this.difuminacion = difuminacion;
   }
 
   draw() {
@@ -202,8 +201,7 @@ class Particula {
     this.posicion.x += this.velocidad.x;
     this.posicion.y += this.velocidad.y;
 
-    if (this.difuminacion)
-    this.opacidad -= 0.01;
+    if (this.difuminacion) this.opacidad -= 0.01;
   }
 }
 
@@ -238,7 +236,6 @@ class Cuadricula {
       }
     }
   }
-  
 
   actualizar() {
     this.aliens.forEach((alien) => {
@@ -276,9 +273,10 @@ let frames = 0;
 let framesRandom = Math.floor(Math.random() * 500) + 500;
 let game = {
   over: false,
-  active: true
-}
-let puntiacion = 0
+  active: true,
+};
+let puntuacion = 0;
+
 // Fondo de estrellas
 for (let i = 0; i < 100; i++) {
   particulas.push(
@@ -311,15 +309,17 @@ function crearParticulas({ objeto, color, difuminacion }) {
         },
         radio: Math.random() * 3,
         color: color || "yellow",
-        difuminacion: true
+        difuminacion: true,
       })
     );
   }
 }
 
 function animar() {
-
-  if (!game.active) return
+  if (!game.active) {
+    finDelJuego();
+    return;
+  }
 
   requestAnimationFrame(animar);
   c.fillStyle = "black";
@@ -327,10 +327,9 @@ function animar() {
   jugador.actualizar();
 
   particulas.forEach((particula, i) => {
-
-    if (particula.posicion.y - particula.radio >= canvas.height){
-      particula.posicion.x = Math.random() * canvas.width
-      particula.posicion.y = -particula.radio
+    if (particula.posicion.y - particula.radio >= canvas.height) {
+      particula.posicion.x = Math.random() * canvas.width;
+      particula.posicion.y = -particula.radio;
     }
 
     if (particula.opacidad <= 0) {
@@ -346,28 +345,25 @@ function animar() {
     if (alienProyectil.posicion.y + alienProyectil.height >= canvas.height) {
       setTimeout(() => {
         alienProyectiles.splice(i, 1);
-        jugador.opacidad = 0
-        game.over = true
       }, 0);
-
-      setTimeout(() => {
-        game.active = false
-      }, 2000);
-    } else {
-      alienProyectil.actualizar();
     }
+    alienProyectil.actualizar();
 
     if (
       alienProyectil.posicion.y + alienProyectil.height >= jugador.posicion.y &&
       alienProyectil.posicion.x + alienProyectil.width >= jugador.posicion.x &&
       alienProyectil.posicion.x <= jugador.posicion.x + jugador.width
     ) {
-      console.log("Tan Matao");
+      jugador.opacidad = 0;
+      game.over = true;
       crearParticulas({
         objeto: jugador,
         color: "white",
         difuminacion: true,
       });
+      setTimeout(() => {
+        game.active = false;
+      }, 2000);
     }
   });
 
@@ -411,9 +407,12 @@ function animar() {
             );
 
             if (indexAlien !== -1 && indexProyectil !== -1) {
+              // Puntuacion por matar Aliens
+              puntuacion += 100;
+              puntuacionJugador.innerHTML = puntuacion;
               crearParticulas({
                 objeto: alien,
-                difuminacion: true
+                difuminacion: true,
               });
               cuadricula.aliens.splice(indexAlien, 1);
               proyectiles.splice(indexProyectil, 1);
@@ -465,7 +464,6 @@ function animar() {
 animar();
 
 addEventListener("keydown", ({ key }) => {
-
   if (game.over) return;
 
   switch (key) {
@@ -507,3 +505,64 @@ addEventListener("keyup", ({ key }) => {
       break;
   }
 });
+
+// Boton para Reiniciar el Juego
+
+function reiniciar() {
+  // Comprobar si el juego a acabado
+  if (!game.over) return;
+
+  // Restablecer variables de juego
+  game.over = false;
+  game.active = true;
+  puntuacion = 0;
+  puntuacionJugador.innerHTML = puntuacion;
+
+  // Restablecer posición y estado del jugador
+  jugador.posicion = {
+    x: canvas.width / 2 - jugador.width / 2,
+    y: canvas.height - jugador.height - 20,
+  };
+  jugador.velocidad = {
+    x: 0,
+    y: 0,
+  };
+  jugador.rotacion = 0;
+  jugador.opacidad = 1;
+
+  // Limpiar arrays de proyectiles, alienProyectiles y cuadriculas
+  proyectiles.length = 0;
+  alienProyectiles.length = 0;
+  cuadriculas.length = 0;
+
+  // Reiniciar frames y framesRandom
+  frames = 0;
+  framesRandom = Math.floor(Math.random() * 500) + 500;
+
+  // Reiniciar estado de las teclas
+  teclas.a.presionada = false;
+  teclas.d.presionada = false;
+  teclas.ArrowUp.presionada = false;
+
+  // Reiniciar opacidad de las partículas
+  particulas.forEach((particula) => {
+    particula.opacidad = 1;
+  });
+
+  // Reiniciar la velocidad de los aliens y generar nuevas cuadrículas
+  for (let i = 0; i < 2; i++) {
+    cuadriculas.push(new Cuadricula());
+  }
+
+  // Quita el mensaje de fin del juego
+  c.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Start the animation loop again
+  animar();
+}
+
+function finDelJuego() {
+  c.fillStyle = "white";
+  c.font = "bold 40px Arial";
+  c.fillText("FIN DEL JUEGO", canvas.width / 2 - 150, canvas.height / 2);
+}
