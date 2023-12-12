@@ -506,7 +506,7 @@ function animar() {
   }
 
 
-  console.log(cuadriculasGeneradas)
+
   // Generación de nuevas cuadrículas de aliens cada ciertos cuadros
   if (frames % framesRandom === 0 && cuadriculasGeneradas < 5) {
     cuadriculas.push(new Cuadricula());
@@ -644,7 +644,7 @@ function finDelJuego() {
 function victoria() {
   c.fillStyle = "white";
   c.font = "bold 40px Arial";
-  c.fillText("VICTORIA", canvas.width / 2 - 80, canvas.height / 2);
+  c.fillText("VICTORIA", canvas.width / 2 - 150, canvas.height / 2);
   game.active = false;
   game.over = true;
 }
