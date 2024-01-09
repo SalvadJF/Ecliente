@@ -1,6 +1,6 @@
-document.addEventListener('mousedown', boton => {
+document.addEventListener("mousedown", (boton) => {
   let texto = "";
-  switch(boton.button) {
+  switch (boton.button) {
     case 0:
       texto = "Has pulsado el boton izquierdo";
       break;
@@ -12,4 +12,4 @@ document.addEventListener('mousedown', boton => {
       break;
   }
   document.getElementById("resultado").innerHTML += `<p>${texto}</p>`;
-})
+});

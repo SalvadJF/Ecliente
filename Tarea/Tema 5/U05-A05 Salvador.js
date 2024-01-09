@@ -1,19 +1,12 @@
 var imagen = document.getElementById("imagen");
-var imagenOriginal = "imagen1.jpg";
-var imagenNueva = "imagen2.jpg";
-var pulsado = false;
+var imagenOriginal = "imagen1.png";
+var imagenNueva = "imagen2.png";
 
-function cambiarImagen() {
-    if (pulsado) {
-        imagen.src = imagenNueva;
-    }
-}
 
 function presionarBoton() {
-    pulsado = true;
+    imagen.src = imagenNueva;
 }
 
 function soltarBoton() {
-    pulsado = false;
-    imagen.src = imagenOriginal;
+  imagen.src = imagenOriginal;
 }
