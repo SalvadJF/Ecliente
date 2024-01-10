@@ -10,12 +10,12 @@
     - Cuando pulse Haz clic para enviar información, se enviará la información a un correo electrónico en texto plano.
     - Cuando pulse en Haz clic sobre mí, se redirigirá a la página de google.
     -->
-  <script type="text/javascript" src="U05-A08 Salvador.js"></script>
+  <script type="text/javascript" src="U05-A08 Salvador.js" defer></script>
 </head>
 
 <body>
 
-  <form action="">
+  <form action="" method="post">
 
     <fieldset>
       <legend>Datos Personales</legend>
@@ -36,7 +36,7 @@
     <input type="radio" name="color" id="azul">Azul
     <br>
     <label for="asignatura">Selecciona una asignatura:</label>
-    <select name="asignatura">
+    <select name="asignatura" id="asignatura">
       <option value="matematicas">Matematicas</option>
       <option value="lengua">Lengua</option>
       <option value="ingles">Ingles</option>
@@ -63,12 +63,10 @@
       <option value="viernes">Viernes</option>
     </select>
     <br>
-    <input type="submit" value="Haz click para enviar la informacion">
-    <button onclick="limpiarFormulario()">Comenzar a rellenar de nuevo</button>
-    <button onclick="enviarGoogle()">Haz click sobre mi</button>
-    <br>
-
+    <input class="enviar" type="submit" name="enviar" value="Haz click para enviar la informacion">
+    <input type="reset" name="limpiar" value="Comenzar a rellenar de nuevo">
   </form>
+  <button onclick="enviarGoogle()">Haz click sobre mi</button>
 </body>
 
 </html>
