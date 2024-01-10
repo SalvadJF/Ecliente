@@ -13,60 +13,62 @@
   <script type="text/javascript" src="U05-A08 Salvador.js"></script>
 </head>
 
-<form action="">
+<body>
 
-  <fieldset>
-    <legend>Datos Personales</legend>
-    <label for="nombre">Introduce tu nombre</label>
-    <input type="text" name="nombre" id="nombre"></input>
-    <br>
-    <label for="mensaje">Mensaje:</label>
-    <br>
-    <textarea name="mensaje" id="mensaje" cols="60" rows="10"></textarea>
-  </fieldset>
-  <br>
-  <label for="color">Elige un color:</label>
-  <br>
-  <input type="radio" name="color" id="rojo">Rojo</input>
-  <br>
-  <input type="radio" name="color" id="verde">Verde</input>
-  <br>
-  <input type="radio" name="color" id="azul">Azul</input>
-  <br>
-  <label for="asignatura">Selecciona una asignatura:</label>
-  <select name="asignatura">
-    <option value="matematicas">Matematicas</option>
-    <option value="lengua">Lengua</option>
-    <option value="ingles">Ingles</option>
-  </select>
-  <br>
-  <label for="dias">Selecciona los dias con disponibilidad:</label>
-  <br>
-  <input type="checkbox" name="dias" id="lunes">Lunes</input>
-  <br>
-  <input type="checkbox" name="dias" id="martes">Martes</input>
-  <br>
-  <input type="checkbox" name="dias" id="miercoles">Miercoles</input>
-  <br>
-  <input type="checkbox" name="dias" id="jueves">Jueves</input>
-  <br>
-  <input type="checkbox" name="dias" id="viernes">Viernes</input>
-  <br>
-  <label for="preferencia">Selecciona el dia preferente:</label>
-  <select name="preferencia">
-    <option value="lunes">Lunes</option>
-    <option value="martes">Martes</option>
-    <option value="miercoles">Miercoles</option>
-    <option value="jueves">Jueves</option>
-    <option value="viernes">Viernes</option>
-  </select>
-  <br>
-  <input type="submit" value="Haz click para enviar la informacion">
-  <button onclick=limpiarFormulario()>Comenzar a rellenar de nuevo</button>
-  <button onclick=enviarGoogle()>Haz click sobre mi</button>
-  <br>
+  <form action="">
 
-</form>
+    <fieldset>
+      <legend>Datos Personales</legend>
+      <label for="nombre">Introduce tu nombre</label>
+      <input type="text" name="nombre" id="nombre">
+      <br>
+      <label for="mensaje">Mensaje:</label>
+      <br>
+      <textarea name="mensaje" id="mensaje" cols="60" rows="10"></textarea>
+    </fieldset>
+    <br>
+    <label for="color">Elige un color:</label>
+    <br>
+    <input type="radio" name="color" id="rojo">Rojo
+    <br>
+    <input type="radio" name="color" id="verde">Verde
+    <br>
+    <input type="radio" name="color" id="azul">Azul
+    <br>
+    <label for="asignatura">Selecciona una asignatura:</label>
+    <select name="asignatura">
+      <option value="matematicas">Matematicas</option>
+      <option value="lengua">Lengua</option>
+      <option value="ingles">Ingles</option>
+    </select>
+    <br>
+    <label for="dias">Selecciona los dias con disponibilidad:</label>
+    <br>
+    <input type="checkbox" name="dias" id="lunes">Lunes
+    <br>
+    <input type="checkbox" name="dias" id="martes">Martes
+    <br>
+    <input type="checkbox" name="dias" id="miercoles">Miercoles
+    <br>
+    <input type="checkbox" name="dias" id="jueves">Jueves
+    <br>
+    <input type="checkbox" name="dias" id="viernes">Viernes
+    <br>
+    <label for="preferencia">Selecciona el dia preferente:</label>
+    <select name="preferencia">
+      <option value="lunes">Lunes</option>
+      <option value="martes">Martes</option>
+      <option value="miercoles">Miercoles</option>
+      <option value="jueves">Jueves</option>
+      <option value="viernes">Viernes</option>
+    </select>
+    <br>
+    <input type="submit" value="Haz click para enviar la informacion">
+    <button onclick="limpiarFormulario()">Comenzar a rellenar de nuevo</button>
+    <button onclick="enviarGoogle()">Haz click sobre mi</button>
+    <br>
+
+  </form>
 </body>
 
 </html>
