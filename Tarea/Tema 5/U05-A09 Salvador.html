@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actividad 8</title>
+  <title>Actividad 9</title>
   <!-- 
-    Realiza el siguiente formulario
-    - Cuando pulse Haz clic para enviar información, se enviará la información a un correo electrónico en texto plano.
-    - Cuando pulse en Haz clic sobre mí, se redirigirá a la página de google.
+    Modifica el formulario anterior, según la materia seleccionada, debe enviarle el cuestionario a un
+    profesor distinto.
     -->
-  <script type="text/javascript" src="U05-A08 Salvador.js" defer></script>
+  <script type="text/javascript" src="U05-A09 Salvador.js" defer></script>
 </head>
 
 <body>
@@ -27,12 +26,13 @@
       <textarea name="mensaje" id="mensaje" cols="60" rows="10"></textarea>
     </fieldset>
     <br>
-    <p>Elige un color:</p>
-    <input type="radio" name="color" id="rojo">Rojo
+    <label for="color">Elige un color:</label>
     <br>
-    <input type="radio" name="color" id="verde">Verde
+    <input type="radio" name="rojo" id="color">Rojo
     <br>
-    <input type="radio" name="color" id="azul">Azul
+    <input type="radio" name="verde" id="color">Verde
+    <br>
+    <input type="radio" name="azul" id="color">Azul
     <br>
     <label for="asignatura">Selecciona una asignatura:</label>
     <select name="asignatura" id="asignatura">
@@ -41,16 +41,17 @@
       <option value="ingles">Ingles</option>
     </select>
     <br>
-    <p>Selecciona los dias con disponibilidad:</p>
-    <input type="checkbox" name="dias" id="lunes">Lunes
+    <label for="dias">Selecciona los dias con disponibilidad:</label>
     <br>
-    <input type="checkbox" name="dias" id="martes">Martes
+    <input type="checkbox" name="lunes" id="dias">Lunes
     <br>
-    <input type="checkbox" name="dias" id="miercoles">Miercoles
+    <input type="checkbox" name="martes" id="dias">Martes
     <br>
-    <input type="checkbox" name="dias" id="jueves">Jueves
+    <input type="checkbox" name="miercoles" id="dias">Miercoles
     <br>
-    <input type="checkbox" name="dias" id="viernes">Viernes
+    <input type="checkbox" name="jueves" id="dias">Jueves
+    <br>
+    <input type="checkbox" name="viernes" id="dias">Viernes
     <br>
     <label for="preferencia">Selecciona el dia preferente:</label>
     <select name="preferencia" id="preferencia">
@@ -61,7 +62,7 @@
       <option value="viernes">Viernes</option>
     </select>
     <br>
-    <input type="submit" name="enviar" value="Haz click para enviar la informacion">
+    <input class="enviar" type="submit" name="enviar" value="Haz click para enviar la informacion">
     <input type="reset" name="limpiar" value="Comenzar a rellenar de nuevo">
   </form>
   <button onclick="enviarGoogle()">Haz click sobre mi</button>
