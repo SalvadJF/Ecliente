@@ -11,3 +11,5 @@ document.querySelector('form').addEventListener('submit', function(event) {
    var enviarMail = `mailto:destinatario@ejemplo.com?subject=Nuevo mensaje del formulario&body=${decodeURIComponent(mensaje)}`;
    window.location.href = enviarMail;
 });
+
+https://www.youtube.com/watch?v=7LGpIQ6ceJs
