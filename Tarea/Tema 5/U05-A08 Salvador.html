@@ -10,29 +10,177 @@
     - Cuando pulse Haz clic para enviar información, se enviará la información a un correo electrónico en texto plano.
     - Cuando pulse en Haz clic sobre mí, se redirigirá a la página de google.
     -->
+  <style>
+    .contenedor {
+      max-width: 700px;
+      margin: 30px;
+      background-color: #001925;
+      padding: 30px;
+      border-left: 5px solid #ff7a01;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    }
+
+    .cabecera {
+      display: block;
+      color: #ff7a01;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .contenedor .form input{
+      color: #87a4b6;
+      width: 100%;
+      background-color: #002733;
+      border: none;
+      outline: none;
+      padding: 10px;
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      border-left: 1px solid transparent;
+    }
+
+    .contenedor .form label, p {
+      color: #ff7a01;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background-color: #013747;
+      display: inline-block;
+    }
+
+    .contenedor .form input:focus {
+      border-left: 5px solid #ff7a01;
+    }
+
+    .contenedor .form fieldset textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background-color: #013747;
+      color: #ff7a01;
+      font-weight: bold;
+      resize: none;
+      max-height: 150px;
+      max-width: 650px;
+      margin-bottom: 20px;
+      border-left: 1px solid transparent;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .contenedor .form fieldset legend {
+      color: #ff7a01;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+
+    .contenedor .form textarea:focus {
+      border-left: 5px solid #ff7a01;
+    }
+
+    .contenedor .form .radio-contenedor {
+      background-color: #013747;
+      border-radius: 20%;
+      padding: auto;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      display: inline-flex;
+      text-align: center;
+    }
+
+    .contenedor .form .boton-contenedor {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .contenedor .form .boton-contenedor .enviar-boton {
+    flex-basis: 70%;
+    background: #ff7a01;
+    padding: 10px;
+    color: #001925;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+    }
+
+    .contenedor .form .boton-contenedor .enviar-boton:hover {
+      background: transparent;
+      border: 1px solid #ff7a01;
+      color: #ff7a01;
+    }
+
+    .contenedor .form .boton-contenedor .reset-boton-contenedor {
+      filter: drop-shadow(1px 1px 0px #ff7a01);
+      flex-basis: 30%;
+    }
+
+    .contenedor .form .boton-contenedor .reset-boton-contenedor .reset-boton {
+      position: relative;
+      text-align: center;
+      padding: 10px;
+      color: #ff7a01;
+      font-weight: bold;
+      background: #001925;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .contenedor .form .boton-contenedor .reset-boton-contenedor .reset-boton:hover {
+      background: #ff7a01;
+      color: #001925;
+    }
+
+    .contenedor .form select {
+      background: #ff7a01;
+      padding: 10px;
+      color: #001925;
+      font-weight: bold;
+      border: 1px solid transparent;
+      transition: all 0.2s ease-in-out;
+      margin-left: 10px;
+      margin-top: -5px;
+    }
+
+  </style>
   <script type="text/javascript" src="U05-A08 Salvador.js" defer></script>
 </head>
 
 <body>
-
-  <form action="" method="post">
+<div class="contenedor">
+  <form class="form" action="" method="post">
+    <span class="cabecera">Actividad 8</span>
 
     <fieldset>
       <legend>Datos Personales</legend>
       <label for="nombre">Introduce tu nombre</label>
+      <br>
       <input type="text" name="nombre" id="nombre">
       <br>
       <label for="mensaje">Mensaje:</label>
       <br>
-      <textarea name="mensaje" id="mensaje" cols="60" rows="10"></textarea>
+      <textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
     </fieldset>
     <br>
     <p>Elige un color:</p>
-    <input type="radio" name="color" id="rojo">Rojo
     <br>
-    <input type="radio" name="color" id="verde">Verde
-    <br>
-    <input type="radio" name="color" id="azul">Azul
+    <div class="radio-contenedor">
+      <label>
+      <input type="radio" name="color" value="rojo" id="rojo"><span>Rojo</span>
+      </label>
+      <label>
+      <input type="radio" name="color" value="verde" id="verde"><span>Verde</span>
+      </label>
+      <label>
+      <input type="radio" name="color" value="azul" id="azul"><span>Azul</span>
+      </label>
+    </div>
     <br>
     <label for="asignatura">Selecciona una asignatura:</label>
     <select name="asignatura" id="asignatura">
@@ -42,15 +190,23 @@
     </select>
     <br>
     <p>Selecciona los dias con disponibilidad:</p>
-    <input type="checkbox" name="dias" id="lunes">Lunes
-    <br>
-    <input type="checkbox" name="dias" id="martes">Martes
-    <br>
-    <input type="checkbox" name="dias" id="miercoles">Miercoles
-    <br>
-    <input type="checkbox" name="dias" id="jueves">Jueves
-    <br>
-    <input type="checkbox" name="dias" id="viernes">Viernes
+    <div class="radio-contenedor">
+      <label>
+      <input type="checkbox" name="dias" id="lunes" value="lunes">Lunes
+      </label>
+      <label>
+      <input type="checkbox" name="dias" id="martes" value="martes">Martes
+      </label>
+      <label>
+      <input type="checkbox" name="dias" id="miercoles" value="miercoles">Miercoles
+      </label>
+      <label>
+      <input type="checkbox" name="dias" id="jueves" value="jueves">Jueves
+      </label>
+      <label>
+      <input type="checkbox" name="dias" id="viernes" value="viernes">Viernes
+      </label>
+    </div>
     <br>
     <label for="preferencia">Selecciona el dia preferente:</label>
     <select name="preferencia" id="preferencia">
@@ -61,10 +217,16 @@
       <option value="viernes">Viernes</option>
     </select>
     <br>
-    <input type="submit" name="enviar" value="Haz click para enviar la informacion">
-    <input type="reset" name="limpiar" value="Comenzar a rellenar de nuevo">
+    <div class="boton-contenedor">
+      <input class="enviar-boton" type="submit" name="enviar" value="Haz click para enviar la informacion">
+      <div class="reset-boton-contenedor">
+        <input class="reset-boton" type="reset" name="limpiar" value="Comenzar a rellenar de nuevo">
+        <input class="reset-boton" type="button" onclick="enviarGoogle()" value="Haz click sobre mi">
+      </div>
+    </div>
   </form>
-  <button onclick="enviarGoogle()">Haz click sobre mi</button>
+</div>
+  
 </body>
 
 </html>

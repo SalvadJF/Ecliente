@@ -2,14 +2,23 @@ function enviarGoogle() {
   window.location.href = "https://www.google.com";
  }
 
-document.querySelector('form').addEventListener('submit', function(event) {
-   event.preventDefault();
-   var form = event.target;
-   var datos = new FormData(form);
-   var mensaje = `Mensaje: ${datos.get('mensaje')}\nColor: ${datos.get('color')}\nAsignatura: ${datos.get('asignatura')}\nDías: ${[...datos.getAll('dias')]}\nPreferencia: ${datos.get('preferencia')}`;
-   console.log(mensaje)
-   var enviarMail = `mailto:destinatario@ejemplo.com?subject=Nuevo mensaje del formulario&body=${decodeURIComponent(mensaje)}`;
-   window.location.href = enviarMail;
-});
+ // Evento que recoge los datos del Formulario
+ document.querySelector('form').addEventListener('submit', e => {
+   e.preventDefault();
+   // Recogemos todos los datos del formulario usando FormData
+   var datos = Object.fromEntries(
+      new FormData(e.target)
+   );
+   // FormData solo recoge el ultimo checkbox seleccionado con el mismo nombre
+   // Por ello lo eliminamos del objeto
+   delete datos.dias
+   // Recogemos los datos que esten checked de dias
+   var dias = document.querySelectorAll('input[name="dias"]:checked');
+   // Lo pasamos a un array
+   var valores = Array.from(dias).map(cb => cb.value);
 
-https://www.youtube.com/watch?v=7LGpIQ6ceJs
+   // Añadimos el array dias al objeto datos
+   datos.dias = valores
+
+   console.log(datos);
+});
