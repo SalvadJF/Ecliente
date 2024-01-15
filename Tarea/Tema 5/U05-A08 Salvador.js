@@ -20,5 +20,14 @@ function enviarGoogle() {
    // Añadimos el array dias al objeto datos
    datos.dias = valores
 
+   // Creamos el cuerpo del correo con los datos del formulario
+   var cuerpoCorreo = Object.entries(datos).map(([key, value]) => `${key}: ${value}`).join('\n');
+
+   // Construimos el enlace "mailto:" con el cuerpo del correo
+   var mailtoLink = `mailto:correo@prueba.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(cuerpoCorreo)}`;
+
+   // Abrimos el enlace en una nueva ventana o pestaña del navegador
+   window.open(mailtoLink, '_blank');
+   
    console.log(datos);
 });

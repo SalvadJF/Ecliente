@@ -1,42 +1,54 @@
 function enviarGoogle() {
-  window.location.href = "https://www.google.com";
- }
- 
-document.querySelector('.enviar').addEventListener('click', function(e) {
-  e.preventDefault();
-  // Se usa el preventDefault para evitar que se envie la informacion, pues no tiene destino y dara error
-  let datos = {
-     nombre: document.getElementById('nombre').value,
-     mensaje: document.getElementById('mensaje').value,
-     color: document.querySelector('input[name="rojo"]:checked') ||
-            document.querySelector('input[name="verde"]:checked') ||
-            document.querySelector('input[name="azul"]:checked'),
-     asignatura: document.getElementById('asignatura').value,
-     dias: document.querySelectorAll('input[name="dias"]:checked'),
-     preferencia: document.getElementById('preferencia').value
-  };
-
-  switch (datos.asignatura) {
-      case 'Matematicas': {
-         alert('Se ha avisado a A');
-         break;
-      }
-      case 'Lengua' : {
-         alert('Se ha avisado a B')
-         break;
-      }
-      case 'Ingles' : {
-         alert('Se ha avisado a C')
-         break
-      }
-      default:
-         alert('No se a avisado a nadie')
-         break
+   window.location.href = "https://www.google.com";
   }
-
-  
  
-  // Procesa y envía los datos por correo electrónico
-  console.log(Object.values(datos));
-});
+  // Evento que recoge los datos del Formulario
+  document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault();
+    // Recogemos todos los datos del formulario usando FormData
+    var datos = Object.fromEntries(
+       new FormData(e.target)
+    );
+    // FormData solo recoge el ultimo checkbox seleccionado con el mismo nombre
+    // Por ello lo eliminamos del objeto
+    delete datos.dias
+    // Recogemos los datos que esten checked de dias
+    var dias = document.querySelectorAll('input[name="dias"]:checked');
+    // Lo pasamos a un array
+    var valores = Array.from(dias).map(cb => cb.value);
+ 
+    // Añadimos el array dias al objeto datos
+    datos.dias = valores
+ 
+    // Creamos el cuerpo del correo con los datos del formulario
+    var cuerpoCorreo = Object.entries(datos).map(([key, value]) => `${key}: ${value}`).join('\n');
 
+    var mailtoLink = ''
+ 
+    switch (datos.asignatura) {
+      case 'programacion':
+          mailtoLink = `mailto:Ricardo@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(cuerpoCorreo)}`;
+          alert('Se ha enviado el formulario a Ricardo');
+          break;
+  
+      case 'base_de_datos':
+          mailtoLink = `mailto:MiguelA@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(cuerpoCorreo)}`;
+          alert('Se ha enviado el formulario a Miguel Angel');
+          break;
+  
+      case 'sistemas':
+          mailtoLink = `mailto:JoseL@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(cuerpoCorreo)}`;
+          alert('Se ha enviado el formulario a Jose Luis');
+          break;
+  
+      default:
+          alert('No se ha enviado el formulario');
+          break;
+      };
+
+      // Abrimos el enlace en una nueva ventana o pestaña del navegador
+      window.open(mailtoLink, '_blank');
+      
+      console.log(datos);
+   });
+ 
