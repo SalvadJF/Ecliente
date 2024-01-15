@@ -11,29 +11,23 @@ document.querySelector("form").addEventListener("submit", (e) => {
   // Creamos el cuerpo del correo con los datos del formulario
   var cuerpoCorreo = Object.entries(datos)
     .map(([key, value]) => `${key}: ${value}`)
-    .join("\n");
+    .join(" \n");
 
   var mailtoLink = "";
 
   switch (datos.asignatura) {
     case "programacion":
-      mailtoLink = `mailto:Ricardo@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(
-        cuerpoCorreo
-      )}`;
+      mailtoLink = "mailto:Ricardo@donana.com?subject=Datos%20del%20formulario&body="+cuerpoCorreo;
       alert("Se ha enviado el formulario a Ricardo");
       break;
 
     case "base_de_datos":
-      mailtoLink = `mailto:MiguelA@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(
-        cuerpoCorreo
-      )}`;
+      mailtoLink = "mailto:MiguelA@donana.com?subject=Datos%20del%20formulario&body="+cuerpoCorreo;
       alert("Se ha enviado el formulario a Miguel Angel");
       break;
 
     case "sistemas":
-      mailtoLink = `mailto:JoseL@donana.com?subject=Datos%20del%20formulario&body=${encodeURIComponent(
-        cuerpoCorreo
-      )}`;
+      mailtoLink = "mailto:JoseL@donana.com?subject=Datos%20del%20formulario&body="+cuerpoCorreo;
       alert("Se ha enviado el formulario a Jose Luis");
       break;
 
@@ -41,11 +35,10 @@ document.querySelector("form").addEventListener("submit", (e) => {
       alert("No se ha enviado el formulario");
       break;
   }
-
+  console.log(cuerpoCorreo)
   // Abrimos el enlace en una nueva ventana o pestaña del navegador
   window.open(mailtoLink, "_blank");
 
-  console.log(datos);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -99,17 +92,17 @@ radios.forEach(function(radio) {
 function cambiarColorFondo(color) {
   switch (color) {
     case 'rojo':
-      fondo.style.backgroundColor = 'red';
+      fondo.style.backgroundColor = 'darkred';
       break;
     case 'verde':
-      fondo.style.backgroundColor = 'green';
+      fondo.style.backgroundColor = 'darkgreen';
       break;
     case 'azul':
-      fondo.style.backgroundColor = 'blue';
+      fondo.style.backgroundColor = 'darkblue';
       break;
-      case 'ninguno':
-        fondo.style.backgroundColor = '#001925';
-        break;
+    case 'ninguno':
+      fondo.style.backgroundColor = '#001925';
+      break;
     default:
       fondo.style.backgroundColor = '';
       break

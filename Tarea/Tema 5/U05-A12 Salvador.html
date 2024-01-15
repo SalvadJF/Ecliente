@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 12</title>
+  <!-- 
+    Valida el siguiente formulario. Valide también que no puedan dejarse en blanco. Validar el
+    formulario ayudándote de los atributos de html5. La validación se debe realizar poco a poco
+    según el usuario vaya rellenando los campos. En caso de introducir un valor incorrecto,
+    limpiar el campo.
+    -->
+  <style>
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 2em;
+      padding-right: 2em;
+      padding-bottom: 0.4em;
+      background-color: #171717;
+      border-radius: 20px;
+    }
+
+    #heading {
+      text-align: center;
+      margin: 2em;
+      color: rgb(0, 255, 200);
+      font-size: 2em;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      border-radius: 25px;
+      padding: 0.6em;
+      border: none;
+      outline: none;
+      color: white;
+      background-color: #171717;
+      box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    }
+
+    .input-icon {
+      height: 1.3em;
+      width: 1.3em;
+      fill: rgb(0, 255, 200);
+    }
+
+    .input-field {
+      background: none;
+      border: none;
+      outline: none;
+      width: 100%;
+      color: rgb(0, 255, 200);
+      margin-left: 1em;
+    }
+
+    .form .btn {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      margin-top: 2.5em;
+    }
+
+    .button1 {
+      padding: 0.5em;
+      padding-left: 1.1em;
+      padding-right: 1.1em;
+      border-radius: 5px;
+      margin-right: 0.5em;
+      border: none;
+      outline: none;
+      transition: .4s ease-in-out;
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      color: rgb(0, 0, 0);
+      width: 8em;
+      text-align: center;
+      color: rgb(0, 255, 200);
+      font-size: medium;
+    }
+
+    .button1:hover {
+      background-image: linear-gradient(163deg, #00642f 0%, #13034b 100%);
+      color: rgb(0, 255, 200);
+    }
+
+    .button2 {
+      padding: 0.5em;
+      padding-left: 2.3em;
+      padding-right: 2.3em;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      transition: .4s ease-in-out;
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      color: rgb(0, 0, 0);
+      width: 6em;
+      text-align: center;
+      color: rgb(0, 255, 200);
+      font-size: medium;
+    }
+
+    .button2:hover {
+      background-image: linear-gradient(163deg, #00642f 0%, #13034b 100%);
+      color: rgb(0, 255, 200);
+    }
+
+    .card {
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      border-radius: 22px;
+      transition: all .3s;
+      max-width: 500px;
+      margin-left: 1em;
+      margin-top: 1em;
+    }
+
+    .card2 {
+      border-radius: 0;
+      transition: all .2s;
+    }
+
+    .card2:hover {
+      transform: scale(0.98);
+      border-radius: 20px;
+    }
+
+    .card:hover {
+      box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+    }
+
+    .label {
+      color: rgb(0, 255, 200);
+      margin-left: 1em;
+      padding: auto;
+      font-size: larger;
+      font-weight: 800;
+    }
+  </style>
+  <script type="text/javascript" src="U05-A12 Salvador.js" defer></script>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="card2">
+      <form class="form">
+        <p id="heading">Actividad 12</p>
+        <label class="label" for="dni">DNI</label>
+        <div class="field">
+          <input type="text" class="input-field" autocomplete="off" name="dni" id="dni"
+            placeholder="Formato valido : 99.999.999-X">
+        </div>
+        <label class="label" for="nombre">Nombre</label>
+        <div class="field">
+          <input type="text" class="input-field" autocomplete="off" name="nombre" id="nombre"
+            placeholder="Introduzca al menos un nombre y un apellido">
+        </div>
+        <label class="label" for="fnac">Fecha de Nacimiento</label>
+        <div class="field">
+          <input type="date" class="input-field" autocomplete="off" name="fnac" id="fnac"
+            placeholder="Formato valido : dd/mm/yyyy">
+        </div>
+        <label class="label" for="email">E-mail</label>
+        <div class="field">
+          <input type="email" class="input-field" autocomplete="off" name="email" id="email"
+            placeholder="Formato valido : xxx@yyy.zzz">
+        </div>
+        <label class="label" for="pweb">Pagina Web</label>
+        <div class="field">
+          <input type="url" class="input-field" autocomplete="off" name="pweb" id="pweb"
+            placeholder="Formato valido : http://www.xxxx.yyy">
+        </div>
+        <label class="label" for="contra">Contraseña</label>
+        <div class="field">
+          <input type="password" class="input-field" autocomplete="off" name="contra" id="contra"
+            placeholder="Debe contener entre 8 y 10 caracteres">
+        </div>
+        <label class="label" for="contraConfirm">Confirmar contraseña</label>
+        <div class="field">
+          <input type="password" class="input-field" autocomplete="off" name="contraConfirm" id="contraConfirm"
+            placeholder="Debe contener entre 8 y 10 caracteres">
+        </div>
+        <div class="btn">
+          <input class="button1" value="Guardar">
+          <input class="button2" value="Ver">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
