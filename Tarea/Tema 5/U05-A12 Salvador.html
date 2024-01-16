@@ -152,40 +152,40 @@
         <label class="label" for="dni">DNI</label>
         <div class="field">
           <input type="text" class="input-field" autocomplete="off" name="dni" id="dni"
-            placeholder="Formato valido : 99.999.999-X">
+            placeholder="Formato valido : 99.999.999-X" pattern="!/^\d{2}\.\d{3}\.\d{3}-[A-Z]$/">
         </div>
         <label class="label" for="nombre">Nombre</label>
         <div class="field">
           <input type="text" class="input-field" autocomplete="off" name="nombre" id="nombre"
-            placeholder="Introduzca al menos un nombre y un apellido">
+            placeholder="Introduzca al menos un nombre y un apellido" pattern="!/^[a-zA-Z]+\s[a-zA-Z]+$/">
         </div>
         <label class="label" for="fnac">Fecha de Nacimiento</label>
         <div class="field">
           <input type="date" class="input-field" autocomplete="off" name="fnac" id="fnac"
-            placeholder="Formato valido : dd/mm/yyyy">
+            placeholder="Formato valido : dd/mm/yyyy" pattern="!/^\d{2}\/\d{2}\/\d{4}$/">
         </div>
         <label class="label" for="email">E-mail</label>
         <div class="field">
           <input type="email" class="input-field" autocomplete="off" name="email" id="email"
-            placeholder="Formato valido : xxx@yyy.zzz">
+            placeholder="Formato valido : xxx@yyy.zzz" pattern="!/^[^\s@]+@[^\s@]+\.[^\s@]+$/">
         </div>
         <label class="label" for="pweb">Pagina Web</label>
         <div class="field">
           <input type="url" class="input-field" autocomplete="off" name="pweb" id="pweb"
-            placeholder="Formato valido : http://www.xxxx.yyy">
+            placeholder="Formato valido : http://www.xxxx.yyy" pattern="!/^https?:\/\/[^\s/$.?#].[^\s]*$/">
         </div>
         <label class="label" for="contra">Contraseña</label>
         <div class="field">
           <input type="password" class="input-field" autocomplete="off" name="contra" id="contra"
-            placeholder="Debe contener entre 8 y 10 caracteres">
+            placeholder="Debe contener entre 8 y 10 caracteres" pattern="!/^.{8,10}$/">
         </div>
         <label class="label" for="contraConfirm">Confirmar contraseña</label>
         <div class="field">
           <input type="password" class="input-field" autocomplete="off" name="contraConfirm" id="contraConfirm"
-            placeholder="Debe contener entre 8 y 10 caracteres">
+            placeholder="Debe contener entre 8 y 10 caracteres" onchange="validarContra()">
         </div>
         <div class="btn">
-          <input class="button1" value="Guardar">
+          <input class="button1" type="submit" value="Guardar">
           <input class="button2" value="Ver">
         </div>
       </form>
