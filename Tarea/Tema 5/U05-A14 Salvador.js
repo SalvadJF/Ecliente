@@ -40,6 +40,50 @@ form.addEventListener("change", function () {
   }
 });
 
+// Método para obtener la cookie por su nombre
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookiesArray = decodedCookie.split(';');
+  for (let i = 0; i < cookiesArray.length; i++) {
+     let cookie = cookiesArray[i];
+     while (cookie.charAt(0) == ' ') {
+       cookie = cookie.substring(1);
+     }
+     if (cookie.indexOf(name) == 0) {
+       return cookie.substring(name.length, cookie.length);
+     }
+  }
+  return "";
+ }
+ 
+ // Función para ver los datos de la cookie
+ function verDatosCookie() {
+  let datosCookie = getCookie("actividadCookie");
+  if (datosCookie) {
+     alert(datosCookie);
+  } else {
+     alert("No hay datos de cookie.");
+  }
+ }
+ 
+ form.addEventListener('submit', function(e) {
+ 
+  // Recoger los datos del formulario
+  let datos = Object.fromEntries(new FormData(e.target));
+ 
+  // Almacenar los datos del formulario
+  let datosCookie = Object.entries(datos)
+     .map(([key, value]) => `${key}: ${value}`)
+     .join(" \n");
+ 
+  // Añadir los datos a la cookie
+  document.cookie = `actividadCookie=${encodeURIComponent(datosCookie)}; expires=; path=/`;
+ 
+  alert('Cookie Creada')
+ 
+ })
+
 function comprobarLetra(dni) {
   if (dni.charAt(8) != letras[dni.substring(0, 8) % 23]) {
     return false;

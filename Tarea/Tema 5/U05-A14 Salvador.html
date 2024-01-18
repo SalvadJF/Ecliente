@@ -154,7 +154,7 @@
         <div class="field">
          
           <input type="text" class="input-field" autocomplete="off" name="dni" id="dni"
-             pattern="\\d{8}[A-Z]"> <i>Formato 99999999X</i>
+             pattern="\d{8}[A-Z]"> <i>Formato 99999999X</i>
         </div>
         <label class="label" for="nombre">Nombre</label>
         <div class="field">
@@ -178,7 +178,7 @@
         <div class="field">
           
           <input type="url" class="input-field" autocomplete="off" name="pweb" id="pweb"
-            pattern="(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\/[a-zA-Z0-9]+)*" title="Pagina web Invalida"><i>Formato http://www.xxxx.yyy</i>
+            pattern="/https?://(?:[-w]+.)?([-w]+).w+(?:.w+)?/?.*/i" title="Pagina web Invalida"><i>Formato https://www.xxxx.yy</i>
         </div>
         <label class="label" for="contra">Contraseña</label>
         <div class="field">
@@ -194,7 +194,7 @@
         </div>
         <div class="btn">
           <input class="button1" type="submit" value="Guardar">
-          <input class="button2" type="button" onclick="verDatos()" value="Ver">
+          <input class="button2" type="button" onclick="verDatosCookie()" value="Ver">
         </div>
       </form>
     </div>
