@@ -1,30 +1,37 @@
 var imagen = document.getElementById("imagen");
-var imagen1 = "Imagen1.png";
-var imagen2 = "Imagen2.png";
+var offsetX, offsetY, originalX, originalY;
 
+// Variable para verificar si se está arrastrando la imagen
 var mover = false;
-var x = 0;
-var y = 0;
 
-
-imagen.addEventListener("mousedown", (e) => {
-    e.preventDefault();
-    imagen.src = imagen2;
-    mover = true;
-    x = e.offsetX;
-    y = e.offsetY;
-  });
-
-
-imagen.addEventListener("mouseup", (e) => {
+function iniciarArrastre(e) {
   e.preventDefault();
-  imagen.src = imagen1;
+  offsetX = e.clientX;
+  offsetY = e.clientY;
+  var rect = imagen.getBoundingClientRect();
+  originalX = rect.x;
+  originalY = rect.y;
+  document.addEventListener("mousemove", arrastrarImagen);
+  document.addEventListener("mouseup", detenerArrastre);
+}
 
-  mover = false;
+function arrastrarImagen(e) {
+  var nuevoX = originalX + e.clientX - offsetX;
+  var nuevoY = originalY + e.clientY - offsetY;
+  imagen.style.left = nuevoX + "px";
+  imagen.style.top = nuevoY + "px";
+}
 
+function detenerArrastre() {
+  document.removeEventListener("mousemove", arrastrarImagen);
+  document.removeEventListener("mouseup", detenerArrastre);
+}
+
+imagen.addEventListener("mousedown", function (e) {
+  imagen.src = "Imagen2.png";
+  iniciarArrastre(e);
 });
 
-imagen.addEventListener("mousemove", () => {
-    x = e.offsetX;
-    y = e.offsetY;
-  });
+imagen.addEventListener("mouseup", function () {
+  imagen.src = "Imagen1.png";
+});
