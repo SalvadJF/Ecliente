@@ -24,10 +24,5 @@ function detenerArrastre() {
 }
 
 imagen.addEventListener("mousedown", function (e) {
-  imagen.src = "Imagen2.png";
   iniciarArrastre(e);
-});
-
-imagen.addEventListener("mouseup", function () {
-  imagen.src = "Imagen1.png";
 });
