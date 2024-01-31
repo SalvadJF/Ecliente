@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 5</title>
+    <!-- 
+        Realizar un código en el que tengamos en HTML varios párrafos con un determinado texto escrito.
+        Crear un botón para ocultar/visualizar el párrafo  elegido.
+        Para ello puedes utilizar dos clases en CSS y, mediante JavaScript, se irá cambiando la clase al elemento del DOM
+    -->
+    <style>
+        .oculto {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript" src="U06-A05 Salvador.js" defer></script>
+</head>
+
+<body>
+
+    <div class="parrafos">
+    <p id="parrafo1" class="oculto">Este es el primer párrafo.</p>
+
+    <p id="parrafo2" class="oculto">Este es el segundo párrafo.</p>
+
+    <p id="parrafo3" class="oculto">Este es el tercer párrafo.</p>
+
+    </div>
+
+    <input type="button" id="boton" value="Mostrar/Ocultar párrafo"></button>
+    <select name="valorP" id="valorP">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+
+</body>
+
+</html>
