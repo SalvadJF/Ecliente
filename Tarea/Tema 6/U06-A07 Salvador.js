@@ -1,29 +1,46 @@
-document.addEventListener('DOMContentLoaded', function() {
-    function displayDOM(node, arbolDOM) {
-        var nodeName = node.nodeName;
-        var nodeType = node.nodeType;
-        var nodeValue = node.nodeValue;
+// Función para mostrar el DOM en el contenedor
+function displayDOM() {
+    // Obtener el elemento raíz del DOM (document)
+    var rootNode = document;
 
-        if (nodeType == Node.ELEMENT_NODE) {
-            var span = document.createElement('span');
-            span.className = 'node';
-            span.textContent = nodeName;
-            arbolDOM.appendChild(span);
+    // Llamar a la función recursiva para construir la representación del árbol DOM
+    var domTree = buildDOMTree(rootNode);
 
-            if (node.hasChildNodes()) {
-                var childNodes = node.childNodes;
-                for (var i = 0; i < childNodes.length; i++) {
-                    displayDOM(childNodes[i], arbolDOM);
-                }
-            }
-        } else if (nodeType == Node.TEXT_NODE) {
-            var span = document.createElement('span');
-            span.className = 'node';
-            span.textContent = nodeValue;
-            arbolDOM.appendChild(span);
-        }
+    // Mostrar el resultado en el contenedor
+    var domViewer = document.getElementById("domViewer");
+    domViewer.innerHTML = domTree;
+}
+
+// Función recursiva para construir la representación del árbol DOM
+function buildDOMTree(node) {
+    var result = '<ul>';
+    result += '<li>' + getNodeString(node) + '</li>';
+    
+    // Recorrer los nodos hijos
+    for (var i = 0; i < node.children.length; i++) {
+        result += buildDOMTree(node.children[i]);
     }
 
-    var body = document.getElementsByTagName('body')[0];
-    displayDOM(body, document.getElementById('arbolDOM'));
-});
+    result += '</ul>';
+    return result;
+}
+
+// Función para obtener la cadena que representa un nodo del DOM
+function getNodeString(node) {
+    var nodeString = node.nodeName;
+
+    // Agregar el ID si existe
+    if (node.id) {
+        nodeString += ' (id: ' + node.id + ')';
+    }
+
+    // Agregar las clases si existen
+    if (node.classList.length > 0) {
+        nodeString += ' (class: ' + Array.from(node.classList).join(', ') + ')';
+    }
+
+    return nodeString;
+}
+
+// Llamar a la función al cargar la página
+window.onload = displayDOM;
