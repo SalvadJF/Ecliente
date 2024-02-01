@@ -1,63 +1,71 @@
- // Función para recoger los datos del usuario y mostrar la tabla
- function recogerDatos() {
-    // Crear un array multidimensional para almacenar los datos de los alumnos
-    var datosAlumnos = [];
+let enviar = document.getElementById('enviar');
+let mostrar = document.getElementById('mostrar');
 
-    // Recoger datos del usuario
-    for (var i = 0; i < 5; i++) {
-        var nombre = prompt("Ingrese el nombre del alumno " + (i + 1));
-        var notas = [];
-
-        for (var j = 0; j < 3; j++) {
-            var nota = parseFloat(prompt("Ingrese la nota del módulo " + (j + 1) + " para " + nombre));
-            notas.push(nota);
-        }
-
-        // Agregar el nombre y las notas al array multidimensional
-        datosAlumnos.push({ nombre: nombre, notas: notas });
+class Alumno {
+    constructor(nombre, modulo1, modulo2, modulo3) {
+       this.nombre = nombre;
+       this.modulo1 = modulo1;
+       this.modulo2 = modulo2;
+       this.modulo3 = modulo3;
     }
-
-    // Mostrar la tabla en el DOM
-    mostrarTabla(datosAlumnos);
 }
 
-// Función para mostrar la tabla en el DOM
-function mostrarTabla(datosAlumnos) {
-    // Obtener el elemento del body para agregar la tabla
-    var body = document.body;
+var alumnos = [];
 
-    // Crear la tabla
-    var tabla = document.createElement('table');
-    tabla.border = '1';
+function recogerDatos() {
 
-    // Crear la cabecera de la tabla
-    var cabecera = tabla.createTHead();
-    var filaCabecera = cabecera.insertRow();
+    let nombre = document.getElementById('nombre').value;
+    let modulo1 = document.getElementById('modulo1').value;
+    let modulo2 = document.getElementById('modulo2').value;
+    let modulo3 = document.getElementById('modulo3').value;
 
-    var celdaNombre = filaCabecera.insertCell();
-    celdaNombre.textContent = 'Nombre';
+    alumnos.push(new Alumno(nombre, modulo1, modulo2, modulo3));
 
-    for (var i = 0; i < 3; i++) {
-        var celdaModulo = filaCabecera.insertCell();
-        celdaModulo.textContent = 'Módulo ' + (i + 1);
-    }
+    limpiarCampos()
 
-    // Llenar la tabla con los datos de los alumnos
-    for (var i = 0; i < datosAlumnos.length; i++) {
-        var fila = tabla.insertRow();
-
-        var celdaNombreAlumno = fila.insertCell();
-        celdaNombreAlumno.textContent = datosAlumnos[i].nombre;
-
-        for (var j = 0; j < 3; j++) {
-            var celdaNota = fila.insertCell();
-            celdaNota.textContent = datosAlumnos[i].notas[j];
-        }
-    }
-
-    // Agregar la tabla al body del documento
-    body.appendChild(tabla);
+    // Si se envia un nuevo datos se activa de nuevo la generacion de Tablas
+    mostrar.disable = true ? mostrar.disabled = false : '';
 }
 
-// Llamar a la función para recoger datos y mostrar la tabla
-recogerDatos();
+function limpiarCampos() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('modulo1').value = '';
+    document.getElementById('modulo2').value = '';
+    document.getElementById('modulo3').value = '';
+}
+
+function mostrarTabla() {
+    let tabla = document.createElement("table");
+    tabla.innerHTML = `
+        <tr>
+            <th>Nombre</th>
+            <th>Modulo 1</th>
+            <th>Modulo 2</th>
+            <th>Modulo 3</th>
+        </tr>
+    `;
+
+    alumnos.forEach((alumno) => {
+        let fila = tabla.insertRow();
+
+        let celdaNombre = fila.insertCell();
+        celdaNombre.textContent = alumno.nombre;
+
+        let celdaModulo1 = fila.insertCell();
+        celdaModulo1.textContent = alumno.modulo1;
+
+        let celdaModulo2 = fila.insertCell();
+        celdaModulo2.textContent = alumno.modulo2;
+
+        let celdaModulo3 = fila.insertCell();
+        celdaModulo3.textContent = alumno.modulo3;
+    });
+
+    document.body.appendChild(tabla);
+
+    // Bloqueamos el boton de enviar para evitar la generacion de mas de una tabla
+    mostrar.disabled = true;
+}
+
+enviar.addEventListener('click', recogerDatos);
+mostrar.addEventListener('click', mostrarTabla);

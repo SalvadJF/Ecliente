@@ -10,13 +10,198 @@
         Dicha información será introducida por el usuario y una vez finalizada la recogida de datos se mostrará el 
         contenido del array en forma de tabla. Tabla generada por manejo del DOM
     -->
+    <style>
+        form {
+  background-color: #444444;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  margin: auto;
+  
+}
+
+.lb {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin: auto;
+}
+
+.infos{
+  width: 95%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  margin-left: 0.3em;
+  background-color: #333333;
+  color: white;
+}
+
+#enviar {
+  --glow-color: rgb(176, 255, 189);
+  --glow-spread-color: rgba(123, 255, 160, 0.781);
+  --enhanced-glow-color: rgb(182, 175, 71);
+  --btn-color: rgba(13, 241, 21, 0.508);
+  border: .25em solid var(--glow-color);
+  padding: 1em 2em;
+  color: var(--glow-color);
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .05em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  margin-top: 2em;
+  margin-left: 4em;
+  width: 40%;
+}
+
+#enviar::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+#enviar:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+#enviar:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+
+#mostrar {
+  --glow-color: rgb(255, 176, 176);
+  --glow-spread-color: rgba(255, 123, 123, 0.781);
+  --enhanced-glow-color: rgb(182, 175, 71);
+  --btn-color: rgba(241, 13, 13, 0.508);
+  border: .25em solid var(--glow-color);
+  padding: 1em 2em;
+  color: var(--glow-color);
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .05em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  width: 40%;
+}
+
+#mostrar::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+#mostrar:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+#mostrar:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+
+table {
+  background-color: #444444;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  margin: auto;
+  margin-top: 5em;
+  text-align: center;
+  
+}
+
+th {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin: auto;
+}
+
+td{
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  margin-left: 0.3em;
+  background-color: #333333;
+  color: white;
+}
+
+td:first-child{
+    color: aquamarine;
+}
+
+
+    </style>
     <script type="text/javascript" src="U06-A04 Salvador.js" defer></script>
 </head>
 
 <body>
-
-
-
+    <form action="" class="form">
+        <fieldset><legend class="lb">Datos de Alumnos</legend>
+            <label for="nombre" class="lb">Nombre del Alumno:</label>
+            <input type="text" name="nombre" id="nombre" class="infos">
+            <br>
+            <label for="modulo1" class="lb">Nota del modulo 1: </label>
+            <input type="number" name="modulo1" id="modulo1" class="infos" min="0" max="10">
+            <br>
+            <label for="modulo2" class="lb">Nota del modulo 2: </label>
+            <input type="number" name="modulo2" id="modulo2" class="infos" min="0" max="10">
+            <br>
+            <label for="modulo3" class="lb">Nota del modulo 3: </label>
+            <input type="number" name="modulo3" id="modulo3" class="infos" min="0" max="10">
+        </fieldset>
+        <input type="button" name="enviar"  id="enviar" value="Enviar">
+        <input type="button" name="mostrar" id="mostrar" value="Mostrar Alumnos">
+    </form>
 </body>
 
 </html>

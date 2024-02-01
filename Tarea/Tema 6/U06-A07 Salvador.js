@@ -1,5 +1,5 @@
 // Función para mostrar el DOM en el contenedor
-function displayDOM() {
+function mostrarDOM() {
     // Obtener el elemento raíz del DOM (document)
     var rootNode = document;
 
@@ -43,4 +43,4 @@ function getNodeString(node) {
 }
 
 // Llamar a la función al cargar la página
-window.onload = displayDOM;
+window.onload = mostrarDOM;
