@@ -10,12 +10,51 @@
         Se puede manipular con JavaScript para cambiar dinámicamente la estructura y el contenido de una página. 
         Realizar un código que muestre/ represente en el propio HTML  el DOM de la página HTML
     -->
+    <style>
+        .card {
+            width: 30%;
+            height: 25em;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .shadow {
+            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+                0 0 0 2px rgb(190, 190, 190),
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 4em;
+            padding-top: 1em;
+            font-size: xx-large;
+            color: darkblue;
+        }
+
+        .resultado {
+            padding: 1em;
+            margin-bottom: 2em;
+        }
+
+        ul,
+        li {
+            margin-top: 0.2em;
+            margin-bottom: 0.4em;
+            margin-left: 0.5em;
+            font-size: small;
+        }
+    </style>
     <script type="text/javascript" src="U06-A07 Salvador.js" defer></script>
 </head>
 
 <body>
-
-    <div id="dom"></div>
+    <div class="card shadow">
+        <h2>Arbol del DOM</h2>
+        <div id="resultado"></div>
+    </div>
 
 
 </body>
