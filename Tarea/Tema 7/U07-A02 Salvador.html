@@ -17,17 +17,64 @@
         En otra parte, un fichero php llamado ciudadessugerencias.php el cual recibe la petición y envía de vuelta el nombre 
         de las ciudades que ha encontrado en una lista creada previamente.
     -->
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #1e1e1e;
+            padding: 20px;
+            border: 1px solid #3d3c3c;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            width: 35%;
+        }
+
+        .form input {
+            height: 35px;
+            outline: none;
+            border: 2px solid orange;
+            background: transparent;
+            padding: 20px 10px;
+            border-radius: 5px;
+            transition: .5s;
+            color: white;
+            font-size: 20px;
+            width: 80%;
+            align-self: center;
+            text-align: center;
+        }
+
+        .form input:focus {
+            background: orange;
+        }
+
+        .form .sugerencias {
+            width: 50%;
+            color: white;
+            transition: .5s;
+            font-size: 20px;
+            outline: none;
+            border: none;
+            height: 45px;
+            border-radius: 5px;
+            background: orange;
+            align-self: center;
+            padding-top: 1em;
+            margin-top: -1em;
+        }
+    </style>
     <script type="text/javascript" src="U07-A02 Salvador.js"></script>
 </head>
 
 <body>
-
-    <form id="form">
-
-        <input type="text" id="ciudad" placeholder="Introduzca una ciudad..." autocomplete="off">
-
-        <div id="sugerencias"></div>
-
+    <form class="form">
+        Escribe el nombre de alguna ciudad donde quieres ir:
+        <input type="text" class="input" placeholder="Introduzca una ciudad...">
+        <label for="sugerencias" class="sugerencias">Sugerencias</label>
+        <p id="sugerencias"></p>
     </form>
 
 </body>
