@@ -1,11 +1,35 @@
-async function consejo(){
+document.addEventListener("DOMContentLoaded", function() {
+  const inputCiudad = document.getElementById("inputC");
+  const listaSugerencias = document.getElementById("sugerencias");
 
-  const  requestURL = './consultaC.php';
-  const  request = new Request(requestURL);
+  inputCiudad.addEventListener("input", function() {
+      const ciudad = inputCiudad.value.trim().toLowerCase();
+      if (ciudad.length === 0) {
+          listaSugerencias.innerHTML = "";
+          return;
+      }
 
-  const respuesta = await fetch(request);
-  const texto     = await respuesta.text();
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                  const sugerencias = JSON.parse(xhr.responseText);
+                  mostrarSugerencias(sugerencias);
+              } else {
+                  console.error("Error en la solicitud: " + xhr.status);
+              }
+          }
+      };
+      xhr.open("GET", `consultaC.php?ciudad=${ciudad}`, true);
+      xhr.send();
+  });
 
-  const sugerencias = JSON.parse(texto);
-
-}
+  function mostrarSugerencias(sugerencias) {
+      listaSugerencias.innerHTML = "";
+      sugerencias.forEach(function(ciudad) {
+          const item = document.createElement("li");
+          item.textContent = ciudad;
+          listaSugerencias.appendChild(item);
+      });
+  }
+});
