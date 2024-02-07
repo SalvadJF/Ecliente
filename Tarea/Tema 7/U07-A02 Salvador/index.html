@@ -14,8 +14,8 @@
         El sistema estará compuesto de dos partes: 
 
         En una parte, se tiene el código HTML con los script JavaScript integrados y la pertinente llamada HttpRequest 
-        En otra parte, un fichero php llamado Ciudades.json el cual recibe la petición y envía de vuelta el nombre 
-        de las ciudades que ha encontrado en una lista creada previamente.
+        En otra parte, un fichero php llamado consultaC.php el cual recibe la petición y consulta a un Json llamado ciudades.json 
+        y envía de vuelta el nombre que coincidan.
     -->
     <style>
         .form {
@@ -65,16 +65,21 @@
             padding-top: 1em;
             margin-top: -1em;
         }
+
+        li {
+            list-style:inside;
+        }
+
     </style>
-    <script type="text/javascript" src="U07-A02 Salvador.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
     <form class="form">
         Escribe el nombre de alguna ciudad donde quieres ir:
-        <input type="text" class="input" placeholder="Introduzca una ciudad...">
+        <input type="text" id="inputC" class="input" placeholder="Introduzca una ciudad...">
         <label for="sugerencias" class="sugerencias">Sugerencias</label>
-        <p id="sugerencias"></p>
+        <ul id="sugerencias"></ul>
     </form>
 
 </body>
