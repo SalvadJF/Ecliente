@@ -19,6 +19,5 @@ foreach ($ciudades[0]["ciudades"] as $c) {
 }
 
 // Devolver las sugerencias como un JSON
-header('Content-Type: application/json');
 echo json_encode($sugerencias);
 
