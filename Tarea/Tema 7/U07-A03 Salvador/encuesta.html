@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <!--
+        Crear una encuesta interactiva utilizando AJAX.
+
+        Esta encuesta hará una pregunta al usuario y mostrará el resultado total de todas las preguntas realizadas hasta el momento.
+
+        La página web constará de tres partes: 
+
+        Un fichero de texto (resultados. txt). Donde se almacenan los resultados.
+        Es donde se van almacenarse los resultados de la encuesta. 
+        Se va a llamar resultados. txt y se va a iniciar con la siguiente línea de texto: 0||0||0||0 Cada uno de esos campos separados por || serán los votos que obtendrá cada una de las opciones. 
+        Conforme los usuarios vayan votando, el contenido del fichero irá cambiando: 16||8||2||1
+        Una página html (encuesta. htlm). Donde se genera la encuesta. 
+        La página web para la encuesta es sumamente sencilla. 
+        Consta de cuatro input de tipo radio que, al ser seleccionados, ejecutarán una función. 
+        Esta función realiza una llamada AJAX a la página web php encuesta-voto.php pasándole como parámetro por GET el valor del voto emitido por el usuario.
+        Una página php (encuesta_voto.php). Recoge el voto del usuario y calcula los tantos por ciento teniendo en cuenta los datos anteriores, además de publicar el resultado.
+        En php deberá abrir el fichero donde están almacenados los datos.
+        Colocamos el contenido en un array y lo almacenamos en cuatro variables independientes según la opción votada
+        Extraernos el voto de los participantes y actualizamos los votos añadiendo el recibido a los anteriores.
+        Creamos la cadena que se va a insertar en el fichero. Se abre el fichero corno escritura y se escriben los votos actualizados.
+        Se calcula el % del voto de cada uno de las opciones votadas.
+    -->
+    <style>
+        .card {
+            width: 50%;
+            height: 254px;
+            background: #86aa94;
+            border-radius: 15px;
+            box-shadow: 1px 5px 60px 0px #100a886b;
+            padding: 3em;
+            margin: auto;
+        }
+
+        .card .card-border-top {
+            width: 60%;
+            height: 3%;
+            background: #055526;
+            margin: auto;
+            border-radius: 0px 0px 15px 15px;
+        }
+
+        .card span {
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            display: block;
+            padding-top: 10px;
+            font-size: 16px;
+            margin-bottom: 3em;
+        }
+
+        .card .job {
+            font-weight: 400;
+            font-size: x-large;
+            color: white;
+            display: block;
+            text-align: left;
+            padding-top: 3px;
+        }
+
+        .boton {
+            padding: 8px 25px;
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+            border: none;
+            margin-top: 30px;
+            background: #055526;
+            color: white;
+            font-weight: 600;
+        }
+
+        .boton:hover {
+            background: #534bf3;
+
+        }
+    </style>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-border-top">
+        </div>
+        <span> ¿Que equipo crees que va a ganar la liga este año?</span>
+        <form action="">
+            <div class="job">
+                <input type="radio" name="equipo" id="real" value="real">
+                <label for="real">Real Madrid</label>
+                <br>
+
+                <input type="radio" name="equipo" id="barcelona" value="barcelona">
+                <label for="barcelona">Barcelona</label>
+                <br>
+
+                <input type="radio" name="equipo" id="betis" value="betis">
+                <label for="betis">Betis</label>
+                <br>
+
+                <input type="radio" name="equipo" id="sevilla" value="sevilla">
+                <label for="sevilla">Sevilla</label>
+                <br>
+            </div>
+            <input type="submit" id="votar" name="votar" value="Votar" class="boton">
+        </form>
+    </div>
+
+</body>
+
+</html>
