@@ -13,8 +13,13 @@ document.addEventListener("DOMContentLoaded", function() {
       xhr.onreadystatechange = function() {
           if (xhr.readyState === XMLHttpRequest.DONE) {
               if (xhr.status === 200) {
-                  const sugerencias = JSON.parse(xhr.responseText);
-                  mostrarSugerencias(sugerencias);
+                  console.log(xhr.responseText); // Imprimir la respuesta recibida
+                  try {
+                      const sugerencias = JSON.parse(xhr.responseText);
+                      mostrarSugerencias(sugerencias);
+                  } catch (error) {
+                      console.error("Error al analizar la respuesta JSON: " + error);
+                  }
               } else {
                   console.error("Error en la solicitud: " + xhr.status);
               }
