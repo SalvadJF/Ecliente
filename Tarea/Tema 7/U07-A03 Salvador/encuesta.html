@@ -29,21 +29,13 @@
     -->
     <style>
         .card {
-            width: 50%;
-            height: 254px;
+            width: 30%;
+            height: 50%;
             background: #86aa94;
             border-radius: 15px;
             box-shadow: 1px 5px 60px 0px #100a886b;
             padding: 3em;
             margin: auto;
-        }
-
-        .card .card-border-top {
-            width: 60%;
-            height: 3%;
-            background: #055526;
-            margin: auto;
-            border-radius: 0px 0px 15px 15px;
         }
 
         .card span {
@@ -81,14 +73,32 @@
             background: #534bf3;
 
         }
+
+        .cardVotos {
+            width: 10%;
+            height: 5em;
+            background: #86aa94;
+            border-radius: 15px;
+            box-shadow: 1px 5px 60px 0px #100a886b;
+            padding: 3em;
+            margin: auto;
+            margin-top: 2em;
+        }
+
+        .cardVotos .jobVotos {
+            font-weight: 400;
+            font-size: small;
+            color: white;
+            display: block;
+            text-align: left;
+            padding-top: 3px;
+        }
     </style>
     <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
     <div class="card">
-        <div class="card-border-top">
-        </div>
         <span> ¿Que equipo crees que va a ganar la liga este año?</span>
         <form action="">
             <div class="job">
@@ -109,9 +119,27 @@
                 <br>
             </div>
             <input type="submit" id="votar" name="votar" value="Votar" class="boton">
+
+
         </form>
+
+
+
     </div>
 
+    <div class="cardVotos">
+        <div class="jobVotos">
+            <label for="votacionReal">Real Madrid : </label><span id="resultadoReal"></span>
+            <br>
+            <label for="votacionBar">Barcelona : </label><span id="resultadoBar"></span>
+            <br>
+            <label for="votacionBetis">Betis : </label><span id="resultadoBetis"></span>
+            <br>
+            <label for="votacionSevilla">Sevilla : </label><span id="resultadoSevilla"></span>
+            <br>
+            <p>Votos Totales :</p><span id="votosTotales"></span>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -24,14 +24,6 @@ switch ($voto) {
         break;
 }
 
-// Convertir los votos a porcentajes
-$totalVotos = array_sum($votos);
-$porcentajes = array();
-foreach ($votos as $v) {
-    $porcentaje = ($v / $totalVotos) * 100;
-    $porcentajes[] = number_format($porcentaje, 2);
-}
-
 // Crear la cadena de resultados
 $resultadosActualizados = implode('||', $votos);
 
@@ -39,5 +31,5 @@ $resultadosActualizados = implode('||', $votos);
 file_put_contents('resultados.txt', $resultadosActualizados);
 
 // Devolver los porcentajes como respuesta
-echo json_encode($porcentajes);
+echo json_encode($resultados);
 
