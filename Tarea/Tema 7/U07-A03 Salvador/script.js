@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let seleccion = document.querySelector('input[name="equipo"]:checked');
         if (seleccion) {
             fetch('encuesta_voto.php?resultados=' + seleccion.value)
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(datos => {
 
                     // Convertir los votos a porcentajes

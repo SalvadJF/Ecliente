@@ -31,5 +31,5 @@ $resultadosActualizados = implode('||', $votos);
 file_put_contents('resultados.txt', $resultadosActualizados);
 
 // Devolver los porcentajes como respuesta
-echo json_encode($resultados);
+echo $resultadosActualizados;
 
