@@ -1,28 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import OtherPage from './pages/OtherPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Cart from './components/Cart';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Compra from "./pages/Compra";
+import './app.css'
 
 function App() {
   return (
     <Router>
-      <div className="app">
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-            <Cart />
-          </Route>
-          <Route path="/other-page">
-            <OtherPage />
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
+    <Header />
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='compra' element={<Compra />}/>
+      </Routes>
+    <Footer />
+  </Router>
   );
 }
 
