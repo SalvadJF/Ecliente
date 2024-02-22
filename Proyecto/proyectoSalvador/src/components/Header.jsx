@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <BotonLogo direccion="/" texto="TTT" />
+        <BotonLogo direccion="/" alt="TTT" />
         <ul>
           <li>
             <BotonNav direccion="/" texto="Inicio" />

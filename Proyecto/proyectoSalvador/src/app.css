@@ -175,6 +175,7 @@ p {
   margin-left: 10px;
   color: white;
   padding: 10px;
+  flex: 0.5;
 }
 
 .noticia button {
@@ -184,6 +185,7 @@ p {
     border-radius: 20%;
     padding: 5px 20px;
     margin-bottom: 10px;
+    margin-left: 2em;
 }
   
 .noticia button:hover {
@@ -193,6 +195,9 @@ p {
 
 .imagenNoticias {
   width: 100%;
+  min-height: 12em;
+  max-height: 20em;
+  flex: 1;
 }
 
 .noticiaAntigua {
@@ -252,7 +257,7 @@ p {
 
 .Producto {
   flex: 1;
-  background-image: url(../img/imagen3d1.jpg);
+  background-image: url(src/assets/imagen3d1.jpg);
   background-size: contain;
   border-radius: 20px;
   margin-right: 40px;
