@@ -1,71 +1,71 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(0);
-  const [inputSeconds, setInputSeconds] = useState('');
-  const [isRunning, setIsRunning] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
+const Temporizador = () => {
+  const [segundos, setSegundos] = useState(0);
+  const [inputSegundos, setInputSegundos] = useState("");
+  const [comenzado, setComenzado] = useState(false);
+  const [acabado, setAcabado] = useState(false);
 
   useEffect(() => {
-    let intervalId;
+    let intervalo;
 
-    if (isRunning && seconds > 0) {
-      intervalId = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds - 1);
+    if (comenzado && segundos > 0) {
+      intervalo = setInterval(() => {
+        setSegundos((prevSegundos) => prevSegundos - 1);
       }, 1000);
-    } else if (seconds === 0) {
-      setIsRunning(false);
-      setIsFinished(true);
+    } else if (segundos === 0) {
+      setComenzado(false);
+      setAcabado(true);
     }
 
-    return () => clearInterval(intervalId);
-  }, [isRunning, seconds]);
+    return () => clearInterval(intervalo);
+  }, [comenzado, segundos]);
 
-  const handleStart = () => {
-    setIsRunning(true);
-    setSeconds(parseInt(inputSeconds));
+  const comenzarContador = () => {
+    setComenzado(true);
+    setSegundos(parseInt(inputSegundos));
   };
 
-  const handleReset = () => {
-    setIsRunning(false);
-    setIsFinished(false);
-    setInputSeconds('');
-    setSeconds(0);
+  const reiniciar = () => {
+    setComenzado(false);
+    setAcabado(false);
+    setInputSegundos("");
+    setSegundos(0);
   };
 
-  const renderStartScreen = () => (
+  const inicio = () => (
     <div>
       <input
         type="number"
-        placeholder="Enter seconds"
-        value={inputSeconds}
-        onChange={(e) => setInputSeconds(e.target.value)}
+        placeholder="Introduce los segundos"
+        value={inputSegundos}
+        onChange={(e) => setInputSegundos(e.target.value)}
       />
-      <button onClick={handleStart}>Start</button>
+      <button onClick={comenzarContador}>Comenzar</button>
     </div>
   );
 
-  const renderRunningScreen = () => (
+  const funcionamiento = () => (
     <div>
-      <p>Countdown: {seconds} seconds</p>
-      <button onClick={handleReset}>Reset</button>
+      <p>Countdown: {segundos} segundos</p>
+      <button onClick={reiniciar}>Reiniciar</button>
     </div>
   );
 
-  const renderFinishedScreen = () => (
+  const terminado = () => (
     <div>
       <p>Se acabo el tiempo</p>
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={reiniciar}>Reiniciar</button>
     </div>
   );
 
   return (
     <div>
-      {!isRunning && !isFinished && renderStartScreen()}
-      {isRunning && !isFinished && renderRunningScreen()}
-      {!isRunning && isFinished && renderFinishedScreen()}
+      {!comenzado && !acabado && inicio()}
+      {comenzado && !acabado && funcionamiento()}
+      {!comenzado && acabado && terminado()}
     </div>
   );
 };
 
-export default Timer;
+export default Temporizador;
