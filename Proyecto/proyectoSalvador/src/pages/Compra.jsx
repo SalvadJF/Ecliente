@@ -1,3 +1,4 @@
+import { Carrito } from "../components/Carrito";
 const Compra = () => {
     return (
       <main role="main">
@@ -11,6 +12,9 @@ const Compra = () => {
           <div>
             <h2 className="titulos">| Modelos y Texturas 3D</h2>
           </div>
+        </section>
+        <section>
+          <Carrito />
         </section>
       </main>
     );
