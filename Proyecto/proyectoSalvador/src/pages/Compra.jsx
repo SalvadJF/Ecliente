@@ -1,4 +1,4 @@
-import { Carrito } from "../components/Carrito";
+import  Carrito  from "../components/Carrito";
 const Compra = () => {
     return (
       <main role="main">
