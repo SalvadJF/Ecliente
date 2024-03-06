@@ -1166,3 +1166,77 @@ nav li span:hover {
 .visually-hidden {
   display: none;
 }
+
+.bannerCarrito {
+  width: 100%;
+  min-height: 15em;
+  max-height: 20%;
+  background-color: #a51d2d;
+  border-bottom: 2px;
+  border-style:double;
+}
+
+.bannerCarrito h1{
+  color: white;
+  text-align: center;
+  margin: auto;
+  padding-top: 1.5em;
+  padding: auto;
+  font-size: 5em;
+}
+
+.listaArticulos {
+  background: url(/src/assets/fondo.jpg);
+  width: 100%;
+  min-height: 30em;
+  max-height: 50%;
+  
+}
+
+.listaArticulos h1 {
+  color: white;
+  text-align: center;
+  padding-top: 1em;
+  font-size: 2em;
+}
+
+.listaArticulos ul{
+  list-style: none;
+  display: inline-flex;
+}
+
+.exposicionArticulo{
+  flex: 1;
+  min-width: 10em;
+  max-width: 20em;
+  padding-top: 1em;
+  border-top: 2px;
+  border-style: dashed;
+  border-color: #45a049;
+}
+
+.exposicionArticulo li img {
+  min-width: 10em;
+  max-width: 20em;
+}
+.descripcionCarrito {
+  display: inline-flex;
+}
+
+.botonCarrito {
+  font-size: 1em;
+  text-decoration: none;
+  line-height: 30px;
+  padding: 0.5em 3em;
+  color: #f6f5f4;
+  background-color: #a51010;
+  border-style: none;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.botonCarrito:hover {
+  background-color: #ce3f3f;
+}

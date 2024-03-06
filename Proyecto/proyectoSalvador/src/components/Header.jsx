@@ -12,6 +12,9 @@ const Header = () => {
           <li>
             <BotonNav direccion="compra" texto="Compra" />
           </li>
+          <li>
+            <BotonNav direccion="recibos" texto="Recibos" />
+          </li>
         </ul>
       </nav>
     </header>

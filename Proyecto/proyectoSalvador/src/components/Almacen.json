@@ -1,27 +1,48 @@
 {
-    "productos":{
-        "producto": [
-            {
-            "id": 1,
-            "nombre": "ejemplo",
-            "precio": 9.99,
-            "imagen": "/src/assets/ejemplo.png"
-            },
-            {
-            "id": 2,
-            "nombre": "ejemplo",
-            "precio": 20.99,
-            "imagen": "/src/assets/ejemplo.png"
-            },
-            {
-            "id": 3,
-            "nombre": "ejemplo",
-            "precio": 15.99,
-            "imagen": "/src/assets/ejemplo.png"
-            }
-        ],
-        "facturas": [
-
-        ]
-    }
+  "productos": {
+    "producto": [
+      {
+        "id": 1,
+        "nombre": "ejemplo",
+        "precio": 9.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      },
+      {
+        "id": 2,
+        "nombre": "ejemplo",
+        "precio": 20.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      },
+      {
+        "id": 3,
+        "nombre": "ejemplo",
+        "precio": 15.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      },
+      {
+        "id": 4,
+        "nombre": "ejemplo",
+        "precio": 15.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      },
+      {
+        "id": 5,
+        "nombre": "ejemplo",
+        "precio": 15.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      },
+      {
+        "id": 6,
+        "nombre": "ejemplo",
+        "precio": 15.99,
+        "descripcion": "to wuapo",
+        "imagen": "/src/assets/ejemplo.webp"
+      }
+    ]
+  }
 }

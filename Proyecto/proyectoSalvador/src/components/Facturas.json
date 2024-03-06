@@ -1,0 +1,11 @@
+{
+  "facturas": {
+    "factura": [
+      {
+        "id": 1,
+        "total": 30.98,
+        "articulos": [1, 2]
+      }
+    ]
+  }
+}
