@@ -1167,6 +1167,8 @@ nav li span:hover {
   display: none;
 }
 
+/* REACT */
+
 .bannerCarrito {
   width: 100%;
   min-height: 15em;
@@ -1187,9 +1189,11 @@ nav li span:hover {
 
 .listaArticulos {
   background: url(/src/assets/fondo.jpg);
+  background-size: auto;
+  min-width: 100%;
   width: 100%;
   min-height: 30em;
-  max-height: 50%;
+  max-height: 70%;
   
 }
 
@@ -1203,6 +1207,8 @@ nav li span:hover {
 .listaArticulos ul{
   list-style: none;
   display: inline-flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .exposicionArticulo{
@@ -1211,13 +1217,17 @@ nav li span:hover {
   max-width: 20em;
   padding-top: 1em;
   border-top: 2px;
-  border-style: dashed;
-  border-color: #45a049;
+  border-style: double;
+  border-color: white;
+  margin: 1em;
+  
 }
 
 .exposicionArticulo li img {
-  min-width: 10em;
-  max-width: 20em;
+  
+  min-width: 100%;
+  max-width: 15em;
+  align-items: center;
 }
 .descripcionCarrito {
   display: inline-flex;
@@ -1227,7 +1237,7 @@ nav li span:hover {
   font-size: 1em;
   text-decoration: none;
   line-height: 30px;
-  padding: 0.5em 3em;
+  padding: 0.2em 2em;
   color: #f6f5f4;
   background-color: #a51010;
   border-style: none;
@@ -1239,4 +1249,75 @@ nav li span:hover {
 
 .botonCarrito:hover {
   background-color: #ce3f3f;
+}
+
+.listaProductos {
+  display: inline-flex;
+  list-style: none;
+}
+
+.facturaCarrito{
+  background: url(/src/assets/fondo.jpg);
+  background-size: auto;
+  min-width: 100%;
+  width: 100%;
+  min-height: 30em;
+  max-height: 70%;
+  border-top: 2px;
+  border-style: double;
+  border-color: white;
+}
+
+.facturaCarrito h1 {
+  color: white;
+  text-align: center;
+  padding-top: 1em;
+  font-size: 2em;
+}
+
+.facturaCarrito h2 {
+  color: white;
+  margin-top: 0.8em;
+  margin-left: 1em;
+}
+.cartaFactura {
+  background-color: white;
+  margin: 0.5em;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
+.botonFactura {
+  background-color: #45a049;
+  color: white;
+  margin-top: 0.9em;
+  margin-right: 0.8em;
+  margin-left: 1em;
+  padding: 0.6em;
+  border-radius: 10px;
+}
+
+.listaRecibos {
+  display: inline-flex;
+  list-style: none;
+}
+
+.listaRecibos li {
+  min-width: 10em;
+  max-width: 20em;
+  border-top: 2px;
+  border-style: double;
+  border-color: white;
+  margin: 1em;
+  background-color: rgba(218, 0, 255, 0.2);
+  
+}
+
+.cabeceraRecibo {
+  font-size: 1.5em;
+  font-style: italic;
+  border: 2px;
+  border-color: white;
+  border-style: double;
+  margin: auto;
 }

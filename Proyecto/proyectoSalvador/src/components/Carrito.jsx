@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import almacenJson from "./Almacen.json";
+import axios from "axios";
 
 const Producto = ({ producto, onAgregarAlCarrito }) => {
   return (
@@ -8,7 +9,7 @@ const Producto = ({ producto, onAgregarAlCarrito }) => {
         <img src={producto.imagen} alt={producto.nombre} />
         <p>{producto.descripcion}</p>
         <div className="descripcionCarrito">
-          <p>{producto.nombre} - ${producto.precio}</p>
+          <p>{producto.nombre} ${producto.precio}</p>
           <button className="botonCarrito" onClick={() => onAgregarAlCarrito(producto)}>
             Agregar
           </button>
@@ -20,12 +21,14 @@ const Producto = ({ producto, onAgregarAlCarrito }) => {
 
 const ItemCarrito = ({ objeto, onEliminarDelCarrito, botonesBloqueados }) => {
   return (
-    <li>
+    <div className="cartaFactura">
+    <li className="objetoFactura">
       {objeto.nombre} - ${objeto.precio}
       <button className="botonCarrito" onClick={onEliminarDelCarrito} disabled={botonesBloqueados}>
         Eliminar
       </button>
     </li>
+    </div>
   );
 };
 
@@ -58,6 +61,23 @@ const CarritoCompra = () => {
     setTotal(parseFloat(nuevoTotal.toFixed(2)));
   };
 
+  // LLamamos al serivodr con axios para escribir en el json Facturas
+  const facturar = () => {
+    const factura = {
+      total: total,
+      articulos: objetos.map(objeto => objeto.id)
+    };
+  
+    axios.post('http://localhost:3001/facturas', factura) // Hacer la solicitud con Axios
+    .then(response => {
+      console.log('Factura generada correctamente:', response.data);
+      setFacturaGenerada(true);
+    })
+    .catch(error => {
+      console.error('Error al generar la factura:', error);
+    });
+  };
+
   const generarFacturaTexto = () => {
     const facturaTexto = `Total: ${total.toFixed(2)}\nArtículos:\n${objetos.map(objeto => `${objeto.nombre} - ${objeto.precio}`).join('\n')}`;
     return facturaTexto;
@@ -72,7 +92,6 @@ const CarritoCompra = () => {
     const a = document.createElement('a');
     a.href = url;
     a.download = 'factura.txt';
-    a.textContent = 'Descargar Factura'; // Texto del enlace
 
     // Agregar el enlace al DOM y forzar el clic
     document.body.appendChild(a);
@@ -111,7 +130,8 @@ const CarritoCompra = () => {
       </div>
       {total > 0 && (
         <div className="facturaCarrito">
-          <ul>
+          <h1>Factura</h1>
+          <ul className="listaProductos">
             {objetos.map((objeto, index) => (
               <ItemCarrito
                 key={index}
@@ -122,52 +142,17 @@ const CarritoCompra = () => {
             ))}
           </ul>
           <h2>Total: ${total.toFixed(2)}</h2>
-          <button onClick={descargarFactura}>Realizar Compra</button>
+          <button onClick={descargarFactura} className="botonFactura">Realizar Compra</button>
+          <button onClick={facturar}className="botonFactura">Meter Factura en Json</button>
           {confirmacionVisible && (
             <div>
               <p>¡Factura generada correctamente!</p>
-              <button onClick={reiniciarCompra}>Iniciar otra compra</button>
+              <button onClick={reiniciarCompra} className="botonFactura">Iniciar otra compra</button>
             </div>
           )}
         </div>
       )}
     </div>
   );
-};
-
+          };
 export default CarritoCompra;
-
-
-
-
-  /* 
-  No se puede Editar facilmente un Json desde un Navegador
-  
-  const facturar = () => {
-    const factura = {
-      total: total,
-      articulos: objetos.map(objeto => objeto.id)
-    };
-  
-    fetch('http://localhost:3001/facturas', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(factura),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('La solicitud no fue exitosa.');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Factura generada correctamente:', data);
-      setFacturaGenerada(true);
-    })
-    .catch(error => {
-      console.error('Error al generar la factura:', error);
-    });
-  };
-*/

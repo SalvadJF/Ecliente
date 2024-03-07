@@ -3,45 +3,45 @@
     "producto": [
       {
         "id": 1,
-        "nombre": "ejemplo",
+        "nombre": "Mascotas",
         "precio": 9.99,
         "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "imagen": "/src/assets/articulo1.jpeg"
       },
       {
         "id": 2,
-        "nombre": "ejemplo",
+        "nombre": "Zodiaco",
         "precio": 20.99,
-        "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "descripcion": "to bien",
+        "imagen": "/src/assets/articulo2.jpeg"
       },
       {
         "id": 3,
-        "nombre": "ejemplo",
+        "nombre": "Avion",
         "precio": 15.99,
-        "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "descripcion": "ta chulo",
+        "imagen": "/src/assets/articulo3.jpeg"
       },
       {
         "id": 4,
-        "nombre": "ejemplo",
-        "precio": 15.99,
-        "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "nombre": "Casa",
+        "precio": 9.99,
+        "descripcion": "meh",
+        "imagen": "/src/assets/articulo4.jpeg"
       },
       {
         "id": 5,
-        "nombre": "ejemplo",
-        "precio": 15.99,
-        "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "nombre": "Espiral",
+        "precio": 99.99,
+        "descripcion": "flama",
+        "imagen": "/src/assets/articulo5.jpeg"
       },
       {
         "id": 6,
-        "nombre": "ejemplo",
-        "precio": 15.99,
-        "descripcion": "to wuapo",
-        "imagen": "/src/assets/ejemplo.webp"
+        "nombre": "Fuente",
+        "precio": 40.99,
+        "descripcion": "ta mejor",
+        "imagen": "/src/assets/articulo6.jpeg"
       }
     ]
   }

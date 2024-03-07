@@ -3,8 +3,8 @@ const Recibo = () => {
     return (
       <main role="main">
       <section>
-          <div className="bannerFactura">
-            <h1>Recibos</h1>
+          <div className="bannerCarrito">
+            <h1>RECIBOS</h1>
           </div>
       </section>
         <section>

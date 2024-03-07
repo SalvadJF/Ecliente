@@ -5,6 +5,11 @@
         "id": 1,
         "total": 30.98,
         "articulos": [1, 2]
+      },
+      {
+        "id": 2,
+        "total": 52.97,
+        "articulos": [2, 3, 4]
       }
     ]
   }
